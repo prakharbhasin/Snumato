@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0b4efe0f066d8bfc6a410f694dd951ce",
+    "revision": "945ee3fe0560fce2df6ae412ce86af2d",
     "url": "/snumato-dbms/index.html"
   },
   {
-    "revision": "74c4276be4c01c3fe19c",
+    "revision": "e605de57a999a932f33e",
     "url": "/snumato-dbms/static/css/main.ca41bd40.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/snumato-dbms/static/js/2.f9fe3941.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "74c4276be4c01c3fe19c",
-    "url": "/snumato-dbms/static/js/main.cbfc0a18.chunk.js"
+    "revision": "e605de57a999a932f33e",
+    "url": "/snumato-dbms/static/js/main.ba7d0227.chunk.js"
   },
   {
     "revision": "3b6136dd7b1db5f08695",
