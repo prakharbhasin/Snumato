@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/snumato-dbms/static/css/main.ca41bd40.chunk.css",
-    "main.js": "/snumato-dbms/static/js/main.79424077.chunk.js",
-    "main.js.map": "/snumato-dbms/static/js/main.79424077.chunk.js.map",
+    "main.js": "/snumato-dbms/static/js/main.059cc435.chunk.js",
+    "main.js.map": "/snumato-dbms/static/js/main.059cc435.chunk.js.map",
     "runtime-main.js": "/snumato-dbms/static/js/runtime-main.887f5227.js",
     "runtime-main.js.map": "/snumato-dbms/static/js/runtime-main.887f5227.js.map",
     "static/js/2.f9fe3941.chunk.js": "/snumato-dbms/static/js/2.f9fe3941.chunk.js",
     "static/js/2.f9fe3941.chunk.js.map": "/snumato-dbms/static/js/2.f9fe3941.chunk.js.map",
     "index.html": "/snumato-dbms/index.html",
-    "precache-manifest.03d07ee4227d89f29b432a46fb7bfef3.js": "/snumato-dbms/precache-manifest.03d07ee4227d89f29b432a46fb7bfef3.js",
+    "precache-manifest.6ca5f82c32c1d13980a3c42ef86ed280.js": "/snumato-dbms/precache-manifest.6ca5f82c32c1d13980a3c42ef86ed280.js",
     "service-worker.js": "/snumato-dbms/service-worker.js",
     "static/css/main.ca41bd40.chunk.css.map": "/snumato-dbms/static/css/main.ca41bd40.chunk.css.map",
     "static/js/2.f9fe3941.chunk.js.LICENSE.txt": "/snumato-dbms/static/js/2.f9fe3941.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.887f5227.js",
     "static/js/2.f9fe3941.chunk.js",
     "static/css/main.ca41bd40.chunk.css",
-    "static/js/main.79424077.chunk.js"
+    "static/js/main.059cc435.chunk.js"
   ]
 }
