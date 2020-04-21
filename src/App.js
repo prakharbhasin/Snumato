@@ -31,11 +31,11 @@ function App() {
       <Router>
         <Navbar>
           <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/login_page" exact component={LoginPage} />
-            <Route path="/Restaurant_page" exact component={RestaurantPage} />
-            <Route path="/Restaurant" exact component={Restaurant} />
-            <Route path="/signup" exact component={SignUp} />
+            <Route path="/snumato-dbms" exact component={HomePage} />
+            <Route path="/snumato-dbms/login_page" exact component={LoginPage} />
+            <Route path="/snumato-dbms/Restaurant_page" exact component={RestaurantPage} />
+            <Route path="/snumato-dbms/Restaurant" exact component={Restaurant} />
+            <Route path="/snumato-dbms/signup" exact component={SignUp} />
           </Switch>
         </Navbar>
       </Router>
