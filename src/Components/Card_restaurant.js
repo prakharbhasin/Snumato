@@ -29,7 +29,7 @@ export default function Card_restaurant(props) {
   // const custom = customStyles();
 
   return (
-    <Link to="/restaurant" style={{ textDecoration: "none" }}>
+    <Link to="/snumato-dbms/restaurant" style={{ textDecoration: "none" }}>
       <Grid item xs={6} direction="row" justify="center" alignItems="center">
       <Card className={classes.root} style={{ background: "black", opacity:"0.85" }}>
         <CardActionArea>

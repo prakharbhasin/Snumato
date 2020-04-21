@@ -23,7 +23,7 @@ import { Button, Grid } from "@material-ui/core";
 import "../resources/CSS/navbar.css"
 
 const BTstyle = {
-  opacity: "0.8",
+  // opacity: "0.8",
   //background: "#C34",
   alignItems: "justify",
   margin: "10px",
@@ -143,7 +143,7 @@ export default function MiniDrawer(props) {
               variant="h5"
               //noWrap
               style={{ opacity: "1", color: "#F05", textDecoration: "none" }}
-              to="/"
+              to="/snumato-dbms"
               component={Link}
             >
               SNUMATO
@@ -151,7 +151,7 @@ export default function MiniDrawer(props) {
             <Grid container justify="flex-end" direction="row" alignItems="flex-start">
         <Button
           style={BTstyle}
-          to="/login_page"
+          to="/snumato-dbms/login_page"
           color="secondary"
           variant="text"
           component={Link}
@@ -187,7 +187,7 @@ export default function MiniDrawer(props) {
           <Divider />
           <List>
             {["Today's deals", "Near Me", "Browse"].map((text, index) => (
-              <Link to="./" style={{ textDecoration: "none", color: "inherit" }}>
+              <Link to="./snumato-dbms" style={{ textDecoration: "none", color: "inherit" }}>
                 <ListItem button key={text} className="listItem">
                   <ListItemIcon style={{ color: "white" }}>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}

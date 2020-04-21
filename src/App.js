@@ -31,7 +31,7 @@ function App() {
       <Router>
         <Navbar>
           <Switch>
-            <Route path="/snumato-dbms" exact component={HomePage} />
+            <Route path="/snumato-dbms/" exact component={HomePage} />
             <Route path="/snumato-dbms/login_page" exact component={LoginPage} />
             <Route path="/snumato-dbms/Restaurant_page" exact component={RestaurantPage} />
             <Route path="/snumato-dbms/Restaurant" exact component={Restaurant} />

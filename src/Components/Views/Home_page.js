@@ -40,7 +40,7 @@ class home_page extends Component {
         >
           <Button
             className="BT"
-            to="/Restaurant_page"
+            to="/snumato-dbms/Restaurant_page"
             color="secondary"
             variant="contained"
             component={Link}
