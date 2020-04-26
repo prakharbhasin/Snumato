@@ -161,7 +161,7 @@ export default function MiniDrawer(props) {
                 color="secondary"
                 variant="text"
                 component={Link}
-                className="BT"
+                className="BT logo-main"
               >
                 LOGIN/SIGN UP
               </Button>
@@ -172,7 +172,7 @@ export default function MiniDrawer(props) {
                 color="secondary"
                 variant="text"
                 component={Link}
-                className="BT"
+                className="BT logo-main"
               >
                 <ShoppingCartIcon />
               </IconButton>

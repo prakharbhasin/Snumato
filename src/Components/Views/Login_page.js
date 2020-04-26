@@ -10,7 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 
 function Copyright() {
@@ -26,7 +26,32 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const CssTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInputLabel-root": {
+      color: "rgb(255,0,85)",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&:hover fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+      },
+    },
+  },
+})(TextField);
+
+const useStyles = makeStyles((theme) => ({
   spacing: [0, 2, 4, 8],
   root: {
     height: "100vh",
@@ -35,10 +60,9 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: "url(https://source.unsplash.com/user/foodess)",
     //backgroundImage: "url(" + img + ")",
     backgroundRepeat: "no-repeat",
-    backgroundColor:
-    theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main,
     backgroundSize: "fill",
-    backgroundPosition: "center"
+    backgroundPosition: "center",
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -46,22 +70,47 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     background: "black",
-    opacity:"0.8"
+    // opacity:"0.8"
+  },
+  textfield: {
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInputLabel-root": {
+      color: "rgb(255,0,85)",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&:hover fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+        color: "white",
+      },
+    },
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
     background: "black",
-    opacity:"0.8"
-    
+    // opacity:"0.8"
   },
   submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
+    margin: theme.spacing(3, 0, 2),
+  },
+  checkbox: {
+    backgroundColor: "red",
+  },
 }));
 
 export default function SignInSide() {
@@ -70,11 +119,19 @@ export default function SignInSide() {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image}/>
-      <Grid style={{background:"black",opacity:"0.9"}}item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid
+        style={{ background: "black" }}
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <div className={classes.paper}>
-          
-          <Typography component="h1" variant="h5" style={{color:"#EFF"}}>
+          <Typography component="h1" variant="h5" style={{ color: "#EFF" }}>
             Sign in
           </Typography>
           <form className={classes.form} noValidate>
@@ -89,7 +146,7 @@ export default function SignInSide() {
               autoComplete="email"
               autoFocus
               color="secondary"
-              style={{color:"#EFF"}}
+              className={classes.textfield}
             />
             <TextField
               variant="outlined"
@@ -102,16 +159,23 @@ export default function SignInSide() {
               id="password"
               autoComplete="current-password"
               color="secondary"
+              className={classes.textfield}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="secondary" />}
+              control={
+                <Checkbox
+                  value="remember"
+                  color="secondary"
+                  icon={<span className={classes.checkbox} />}
+                />
+              }
               label="Remember me"
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              style={{background:"#F05",opacity:"1"}}
+              style={{ background: "#F05", opacity: "1" }}
               className={classes.submit}
             >
               Sign In
@@ -138,7 +202,12 @@ export default function SignInSide() {
               component="a"
               href="https://unsplash.com/@foodess"
               clickable
-              style={{ position: "absolute", left: "20vh",background:"black",opacity:"0.7",color:"#EFF" }}
+              style={{
+                position: "absolute",
+                left: "20vh",
+                background: "black",
+                color: "#EFF",
+              }}
             />
           </Box>
         </div>
