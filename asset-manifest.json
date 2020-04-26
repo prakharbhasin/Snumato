@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/snumato-dbms/static/css/main.d11bfa0f.chunk.css",
-    "main.js": "/snumato-dbms/static/js/main.ac331c90.chunk.js",
-    "main.js.map": "/snumato-dbms/static/js/main.ac331c90.chunk.js.map",
+    "main.js": "/snumato-dbms/static/js/main.2bc883c9.chunk.js",
+    "main.js.map": "/snumato-dbms/static/js/main.2bc883c9.chunk.js.map",
     "runtime-main.js": "/snumato-dbms/static/js/runtime-main.887f5227.js",
     "runtime-main.js.map": "/snumato-dbms/static/js/runtime-main.887f5227.js.map",
-    "static/js/2.1bff9e91.chunk.js": "/snumato-dbms/static/js/2.1bff9e91.chunk.js",
-    "static/js/2.1bff9e91.chunk.js.map": "/snumato-dbms/static/js/2.1bff9e91.chunk.js.map",
+    "static/js/2.7c86cffc.chunk.js": "/snumato-dbms/static/js/2.7c86cffc.chunk.js",
+    "static/js/2.7c86cffc.chunk.js.map": "/snumato-dbms/static/js/2.7c86cffc.chunk.js.map",
     "index.html": "/snumato-dbms/index.html",
-    "precache-manifest.b08d8e50468ac03e63c9e4a0a76a6301.js": "/snumato-dbms/precache-manifest.b08d8e50468ac03e63c9e4a0a76a6301.js",
+    "precache-manifest.64126d663ba5eba1e000481551d6621e.js": "/snumato-dbms/precache-manifest.64126d663ba5eba1e000481551d6621e.js",
     "service-worker.js": "/snumato-dbms/service-worker.js",
     "static/css/main.d11bfa0f.chunk.css.map": "/snumato-dbms/static/css/main.d11bfa0f.chunk.css.map",
-    "static/js/2.1bff9e91.chunk.js.LICENSE.txt": "/snumato-dbms/static/js/2.1bff9e91.chunk.js.LICENSE.txt",
+    "static/js/2.7c86cffc.chunk.js.LICENSE.txt": "/snumato-dbms/static/js/2.7c86cffc.chunk.js.LICENSE.txt",
     "static/media/index.css": "/snumato-dbms/static/media/3007281_black-01.af509691.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.887f5227.js",
-    "static/js/2.1bff9e91.chunk.js",
+    "static/js/2.7c86cffc.chunk.js",
     "static/css/main.d11bfa0f.chunk.css",
-    "static/js/main.ac331c90.chunk.js"
+    "static/js/main.2bc883c9.chunk.js"
   ]
 }
