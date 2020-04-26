@@ -38,40 +38,68 @@ class Cart_page extends Component {
       <Grid container justify="center">
         <Grid item xs={7}>
           <Paper>
-            <Typography variant="h1" align="center">
+            <Typography variant="h2" align="center" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif",padding:"20px"}}>
               CART
             </Typography>
+            <Typography variant="h6" align="left" style={{margin:"10px",fontFamily:"Josefin Sans, sans-serif"}}>
+              We Dem Tourist Cafe
+              </Typography>
             <TableContainer component={Paper}>
               <Table aria-label="cart-table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Food Item</TableCell>
-                    <TableCell align="right">Rate</TableCell>
-                    <TableCell>Servings</TableCell>
+                    <TableCell align="center">Servings</TableCell>
+                    <TableCell align="center">Cost</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell>Paneer</TableCell>
-                    <TableCell align="right">$1000</TableCell>
-                    <TableCell>
+                 <TableRow>
+                    <TableCell>Bhasin Bhajia Pao</TableCell>
+                    <TableCell align="center">
                       <Serving
                         increase={this.increase}
                         decrease={this.decrease}
                         value={this.state.value}
                       />
                     </TableCell>
+                    <TableCell align="center"> 
+                    ${this.state.value*520}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Paneer</TableCell>
-                    <TableCell align="right">$1000</TableCell>
-                    <TableCell>2</TableCell>
+                    <TableCell>Singh Singhaade</TableCell>
+                    <TableCell align="center">
+                    <Serving
+                        increase={this.increase}
+                        decrease={this.decrease}
+                        value={this.state.value}
+                      />
+                    </TableCell>
+                    <TableCell align="center">
+                        ${this.state.value*140}
+                    </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Paneer</TableCell>
-                    <TableCell align="right">$1000</TableCell>
-                    <TableCell>2</TableCell>
+                    <TableCell>Jain Shikanji</TableCell>
+                    <TableCell align="center">
+                    <Serving
+                        increase={this.increase}
+                        decrease={this.decrease}
+                        value={this.state.value}
+                      />
+                    </TableCell>
+                    <TableCell align="center">
+                      ${this.state.value*300}
+                    </TableCell>
                   </TableRow>
+                  <br/>
+                  <TableRow><TableCell align="left" style={{fontSize:"19px", color:"#F05",fontFamily:"Josefin Sans, sans-serif"}}>Bill Details</TableCell></TableRow>
+                  <TableCell align="left" fontSize="10px" style={{fontSize:"13px",fontFamily:"Josefin Sans, sans-serif"}}> Net Charge: 200$ <br/> Delivery Charge:  10$ <br/> Total Amount: 210$</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell>
+                    <Button align="right" variant="outlined" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif"}}>Place Order</Button>
+                  </TableCell>
                 </TableBody>
               </Table>
             </TableContainer>
