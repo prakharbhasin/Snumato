@@ -19,8 +19,14 @@ class Restaurant_page extends Component {
   render() {
     return (
       <div>
-        <Grid container justify="space-between">
-          <Grid item>
+        <Grid container justify="space-evenly" style={{marginLeft: "5%"}}>
+          {this.state.restaurants &&
+            this.state.restaurants.map((res) => (
+              <Grid item>
+                <CardRestaurant rest={res} name={res.name} description={res.location} />
+              </Grid>
+            ))}
+          {/* <Grid item>
             <CardRestaurant name="Naveen Tea House" description="..duh" />
           </Grid>
           <Grid item>
@@ -52,7 +58,7 @@ class Restaurant_page extends Component {
               name="Celeste Cafe"
               description="Chilli Paneer Samosa ftw"
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </div>
     );
