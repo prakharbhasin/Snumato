@@ -4,12 +4,11 @@
 }
 
 .listItem:hover {
-  background-color: #cc3344 !important;
+  background-color: #221f1f !important;
 }
 
 .MuiListItemText-primary {
   font-family: "Baloo Da 2", cursive;
   font-size: large;
 }
-
 

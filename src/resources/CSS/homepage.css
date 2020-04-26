@@ -3,3 +3,15 @@
   align-items: center !important;
   font-size: 30px;
 }
+
+.logo-main {
+  color: #F05;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.logo-main:hover {
+  color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+

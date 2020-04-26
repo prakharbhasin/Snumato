@@ -23,6 +23,7 @@ import Navbar from "./Layout/Navbar";
 import RestaurantPage from "./Components/Restaurant_page";
 import Restaurant from "./Components/Views/Restaurant";
 import SignUp from "./Components/Views/signup";
+import Cart from "./Components/Views/Cart_page";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/snumato-dbms/Restaurant_page" exact component={RestaurantPage} />
             <Route path="/snumato-dbms/Restaurant" exact component={Restaurant} />
             <Route path="/snumato-dbms/signup" exact component={SignUp} />
+            <Route path="/snumato-dbms/cart" exact component={Cart} />
           </Switch>
         </Navbar>
       </Router>

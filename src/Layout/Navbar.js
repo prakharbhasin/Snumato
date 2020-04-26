@@ -17,76 +17,76 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+
 import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
-import "../resources/CSS/navbar.css"
+import "../resources/CSS/navbar.css";
 
 const BTstyle = {
-  // opacity: "0.8",
+  opacity: "0.8",
   //background: "#C34",
   alignItems: "justify",
   margin: "10px",
   padding: "5px",
-  fontSize:"16px"
+  fontSize: "16px",
   //fontFamily:"Bree Serif"
-  
 };
-
 
 const drawerWidth = 270;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   paperColor: {
     background: "black",
-    opacity: "0.8"
+    // opacity: "0.8"
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   menuButton: {
-    marginRight: 36
+    marginRight: 36,
   },
   hide: {
-    display: "none"
+    display: "none",
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: "nowrap"
+    whiteSpace: "nowrap",
   },
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerClose: {
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: "hidden",
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing(9) + 1
-    }
+      width: theme.spacing(9) + 1,
+    },
   },
   toolbar: {
     display: "flex",
@@ -94,12 +94,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "flex-end",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar
+    ...theme.mixins.toolbar,
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3)
-  }
+    padding: theme.spacing(3),
+  },
 }));
 
 export default function MiniDrawer(props) {
@@ -124,7 +124,7 @@ export default function MiniDrawer(props) {
           style={{ background: "black" }}
           position="fixed"
           className={clsx(classes.appBar, {
-            [classes.appBarShift]: open
+            [classes.appBarShift]: open,
           })}
         >
           <Toolbar>
@@ -134,7 +134,7 @@ export default function MiniDrawer(props) {
               onClick={handleDrawerOpen}
               edge="start"
               className={clsx(classes.menuButton, {
-                [classes.hide]: open
+                [classes.hide]: open,
               })}
             >
               <MenuIcon />
@@ -142,37 +142,54 @@ export default function MiniDrawer(props) {
             <Typography
               variant="h5"
               //noWrap
-              style={{ opacity: "1", color: "#F05", textDecoration: "none" }}
+              // style={{ opacity: "1",  }}
               to="/snumato-dbms"
               component={Link}
+              className="logo-main"
             >
               SNUMATO
             </Typography>
-            <Grid container justify="flex-end" direction="row" alignItems="flex-start">
-        <Button
-          style={BTstyle}
-          to="/snumato-dbms/login_page"
-          color="secondary"
-          variant="text"
-          component={Link}
-          className="BT"
-        >
-          LOGIN/SIGN UP
-        </Button>
-        </Grid> 
+            <Grid
+              container
+              justify="flex-end"
+              direction="row"
+              alignItems="flex-start"
+            >
+              <Button
+                style={BTstyle}
+                to="/snumato-dbms/login_page"
+                color="secondary"
+                variant="text"
+                component={Link}
+                className="BT"
+              >
+                LOGIN/SIGN UP
+              </Button>
+              <IconButton
+                aria-label="delete"
+                style={BTstyle}
+                to="/snumato-dbms/cart"
+                color="secondary"
+                variant="text"
+                component={Link}
+                className="BT"
+              >
+                <ShoppingCartIcon />
+              </IconButton>
+            </Grid>
           </Toolbar>
         </AppBar>
         <Drawer
           variant="permanent"
           className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
+            [classes.drawerClose]: !open,
           })}
           classes={{
             paper: clsx(classes.paperColor, {
               [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open
-            })
+              [classes.drawerClose]: !open,
+            }),
           }}
         >
           <div className={classes.toolbar}>
@@ -187,7 +204,10 @@ export default function MiniDrawer(props) {
           <Divider />
           <List>
             {["Today's deals", "Near Me", "Browse"].map((text, index) => (
-              <Link to="./snumato-dbms" style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                to="/snumato-dbms"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <ListItem button key={text} className="listItem">
                   <ListItemIcon style={{ color: "white" }}>
                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -201,7 +221,7 @@ export default function MiniDrawer(props) {
           <List>
             {["Login", "Support", "About us"].map((text, index) => (
               <Link
-                to="./login_page"
+                to="snumato-dbms/login_page"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <ListItem button key={text} className="listItem">

@@ -17,11 +17,11 @@ const useStyles = makeStyles({
     maxWidth: 345,
     minWidth: 345,
     marginTop: 20,
-    height: 380
+    height: 380,
   },
   media: {
-    height: 220
-  }
+    height: 220,
+  },
 });
 
 export default function Card_restaurant(props) {
@@ -31,31 +31,41 @@ export default function Card_restaurant(props) {
   return (
     <Link to="/snumato-dbms/restaurant" style={{ textDecoration: "none" }}>
       <Grid item xs={6} direction="row" justify="center" alignItems="center">
-      <Card className={classes.root} style={{ background: "black", opacity:"0.85" }}>
-        <CardActionArea>
-          <CardContent>
-            <CardMedia
-              className={classes.media}
-              image="https://source.unsplash.com/user/foodess"
-              title={props.name}
-            />
-            <Typography gutterBottom variant="h5" component="h2" style={{color:"#f05"}}>
-              {props.name}
-            </Typography>
-            <Typography variant="body2" color="textPrimary" component="p" style={{color:"#eef"}}>
-              {props.description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="secondary">
-            Share
-          </Button>
-          <Button size="small" color="secondary">
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
+        <Card className={classes.root} style={{ background: "black", opacity: "0.95" }}>
+          <CardActionArea>
+            <CardContent>
+              <CardMedia
+                className={classes.media}
+                image="https://source.unsplash.com/user/foodess"
+                title={props.name}
+              />
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="h2"
+                style={{ color: "#f05", marginTop: "10px" }}
+              >
+                {props.name}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="textPrimary"
+                component="p"
+                style={{ color: "#eef" }}
+              >
+                {props.description}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="secondary">
+              Share
+            </Button>
+            <Button size="small" color="secondary">
+              Learn More
+            </Button>
+          </CardActions>
+        </Card>
       </Grid>
     </Link>
   );
