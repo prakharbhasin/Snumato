@@ -146,6 +146,7 @@ export default function MiniDrawer(props) {
               to="/snumato-dbms"
               component={Link}
               className="logo-main"
+              style={{fontFamily:"Josefin Sans, sans-serif"}}
             >
               SNUMATO
             </Typography>

@@ -6,10 +6,10 @@ const Serving = (props) => {
   console.log(props);
 
   return (
-    <ButtonGroup size="small" aria-label="quantity-selector">
-      <Button onClick={props.increase}>+</Button>
+    <ButtonGroup size="small" aria-label="quantity-selector" color="secondary">
+      <Button onClick={props.decrease}>-</Button>
       <Button>{props.value}</Button>
-      <Button onClick={props.increase}>-</Button>
+      <Button onClick={props.increase}>+</Button>
     </ButtonGroup>
   );
 };

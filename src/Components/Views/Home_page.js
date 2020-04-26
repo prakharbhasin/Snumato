@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-import CardRestaurant from "../Card_restaurant";
 import "../../resources/CSS/homepage.css"
 import { Button, Grid } from "@material-ui/core";
 
