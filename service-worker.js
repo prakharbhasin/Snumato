@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/snumato-dbms/precache-manifest.bc2bf310c1c3309134843af3c8ee7c0e.js"
+  "/snumato-dbms/precache-manifest.2139a53ae2fe9466e3d04409211c973b.js"
 );
 
 self.addEventListener('message', (event) => {
