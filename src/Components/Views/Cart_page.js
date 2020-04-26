@@ -98,7 +98,7 @@ class Cart_page extends Component {
                   <TableCell align="left" fontSize="10px" style={{fontSize:"13px",fontFamily:"Josefin Sans, sans-serif"}}> Net Charge: 200$ <br/> Delivery Charge:  10$ <br/> Total Amount: 210$</TableCell>
                   <TableCell></TableCell>
                   <TableCell>
-                    <Button align="right" variant="outlined" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif"}}>Place Order</Button>
+                    <Button align="right" variant="contained" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif"}}>Place Order</Button>
                   </TableCell>
                 </TableBody>
               </Table>

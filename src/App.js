@@ -24,18 +24,31 @@ import RestaurantPage from "./Components/Restaurant_page";
 import Restaurant from "./Components/Views/Restaurant";
 import SignUp from "./Components/Views/signup";
 import Cart from "./Components/Views/Cart_page";
-
+import ParticleContainer from "./Layout/ParticleContainer";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <ParticleContainer />
         <Navbar>
           <Switch>
             <Route path="/snumato-dbms/" exact component={HomePage} />
-            <Route path="/snumato-dbms/login_page" exact component={LoginPage} />
-            <Route path="/snumato-dbms/Restaurant_page" exact component={RestaurantPage} />
-            <Route path="/snumato-dbms/Restaurant" exact component={Restaurant} />
+            <Route
+              path="/snumato-dbms/login_page"
+              exact
+              component={LoginPage}
+            />
+            <Route
+              path="/snumato-dbms/Restaurant_page"
+              exact
+              component={RestaurantPage}
+            />
+            <Route
+              path="/snumato-dbms/Restaurant"
+              exact
+              component={Restaurant}
+            />
             <Route path="/snumato-dbms/signup" exact component={SignUp} />
             <Route path="/snumato-dbms/cart" exact component={Cart} />
           </Switch>
