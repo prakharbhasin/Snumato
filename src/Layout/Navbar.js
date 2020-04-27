@@ -132,7 +132,7 @@ export default function MiniDrawer(props) {
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              onClick={handleDrawerOpen}
+              onMouseOver={handleDrawerOpen}
               edge="start"
               className={clsx(classes.menuButton, {
                 [classes.hide]: open,
@@ -182,6 +182,8 @@ export default function MiniDrawer(props) {
           </Toolbar>
         </AppBar>
         <Drawer
+          onMouseOver={handleDrawerOpen}
+          onMouseOut={handleDrawerClose}
           variant="permanent"
           className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
