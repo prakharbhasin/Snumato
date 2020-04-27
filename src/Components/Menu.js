@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   Button,
@@ -9,8 +9,18 @@ import {
   TableCell,
   TableBody,
 } from "@material-ui/core";
+import axios from "axios";
 
-function Menu() {
+function Menu(props) {
+  const [menu, setMenu] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/restaurants_menu?restaurant_id=${props.id}`)
+      .then((res) => res.data)
+      .then((result) => setMenu(result.restaurants));
+  }, []);
+
   return (
     <div>
       <Typography
@@ -33,11 +43,26 @@ function Menu() {
             >
               Price
             </TableCell>
-            <TableCell>kfjdbfwbfbfjk</TableCell>
+            <TableCell>.</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
+          {menu && menu.map((item) => (
+            <TableRow>
+              <TableCell style={{ color: "white" }}>{item.item_name}</TableCell>
+              <TableCell style={{ color: "white" }} align="center">
+                {" "}
+                {item.item_cost}
+              </TableCell>
+              <TableCell align="right">
+                <Button color="secondary" variant="outlined">
+                  Add
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+
+          {/* <TableRow>
             <TableCell style={{ color: "white" }}>Masala Tea</TableCell>
             <TableCell style={{ color: "white" }} align="center">
               {" "}
@@ -84,7 +109,7 @@ function Menu() {
                 Add
               </Button>
             </TableCell>
-          </TableRow>
+          </TableRow> */}
         </TableBody>
       </Table>
     </div>

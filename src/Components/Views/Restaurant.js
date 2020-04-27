@@ -10,15 +10,15 @@ import {
   Button,
   CardActions,
 } from "@material-ui/core";
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
-import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
-import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
-import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
-import Box from '@material-ui/core/Box';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Rating from '@material-ui/lab/Rating';
+import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
+import SentimentDissatisfiedIcon from "@material-ui/icons/SentimentDissatisfied";
+import SentimentSatisfiedIcon from "@material-ui/icons/SentimentSatisfied";
+import SentimentSatisfiedAltIcon from "@material-ui/icons/SentimentSatisfiedAltOutlined";
+import SentimentVerySatisfiedIcon from "@material-ui/icons/SentimentVerySatisfied";
+import Box from "@material-ui/core/Box";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Rating from "@material-ui/lab/Rating";
 //import StarIcon from "@material-ui/icons/Star";
 // import Rating from "@material-ui/lab/Rating";
 import Menu from "../Menu";
@@ -26,44 +26,44 @@ import Menu from "../Menu";
 const useStyles = makeStyles({
   resHead: {
     marginTop: 20,
-    width: "100%"
+    width: "100%",
   },
   media: {
-    height: 340
+    height: 340,
   },
   resName: {
-    paddingTop: 20
-  }
+    paddingTop: 20,
+  },
 });
 const StyledRating = withStyles({
   iconFilled: {
-    color: '#ff6d75',
+    color: "#ff6d75",
   },
   iconHover: {
-    color: '#ff3d47',
+    color: "#ff3d47",
   },
 })(Rating);
 
 const customIcons = {
   1: {
     icon: <SentimentVeryDissatisfiedIcon />,
-    label: 'Very Dissatisfied',
+    label: "Very Dissatisfied",
   },
   2: {
     icon: <SentimentDissatisfiedIcon />,
-    label: 'Dissatisfied',
+    label: "Dissatisfied",
   },
   3: {
     icon: <SentimentSatisfiedIcon />,
-    label: 'Neutral',
+    label: "Neutral",
   },
   4: {
     icon: <SentimentSatisfiedAltIcon />,
-    label: 'Satisfied',
+    label: "Satisfied",
   },
   5: {
     icon: <SentimentVerySatisfiedIcon />,
-    label: 'Very Satisfied',
+    label: "Very Satisfied",
   },
 };
 
@@ -79,10 +79,20 @@ IconContainer.propTypes = {
 function Restaurant(props) {
   const classes = useStyles();
 
-  const { name, location, working_hours, cost_for_two} = props.location.state
+  const {
+    restaurant_id,
+    name,
+    location,
+    working_hours,
+    cost_for_two,
+  } = props.location.state;
+
   return (
-    <Grid container >
-      <Card className={classes.resHead} style={{ background: "black", opacity:"0.90" }}>
+    <Grid container>
+      <Card
+        className={classes.resHead}
+        style={{ background: "black", opacity: "0.90" }}
+      >
         <CardActionArea>
           <CardContent>
             <CardMedia
@@ -95,39 +105,60 @@ function Restaurant(props) {
               variant="h5"
               component="h2"
               className={classes.resName}
-              style={{color:"#F05"}}
+              style={{ color: "#F05" }}
             >
               {name}
             </Typography>
-            <Box component="fieldset" mb={7} borderColor="transparent" align="right">
+            <Box
+              component="fieldset"
+              mb={7}
+              borderColor="transparent"
+              align="right"
+            >
               <Grid container>
-        <Grid item xs={6}>
-        <Typography  style={{color:"white",}} align="left">{location} </Typography>
-        </Grid>
-        <Grid item xs={6}>
-        <Rating
-          name="customized-icons"
-          defaultValue={4}
-          readOnly
-          IconContainerComponent={IconContainer}
-          style={{color:"#F05"}}
-        />
-        </Grid>
-        <Grid item xs={6} align="left">
-        <Typography style={{color:"white"}} align="left" variant="inherit">Working Hours: {working_hours}</Typography>
-        </Grid>
-        </Grid>
-        <Grid item xs={12} align="left" style={{paddingTop:"8px"}}>
-        <Typography style={{color:"white"}} align="left" variant="inherit">Cost for Two: {cost_for_two}</Typography>
-        </Grid>
-      </Box>
+                <Grid item xs={6}>
+                  <Typography style={{ color: "white" }} align="left">
+                    {location}{" "}
+                  </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Rating
+                    name="customized-icons"
+                    defaultValue={4}
+                    readOnly
+                    IconContainerComponent={IconContainer}
+                    style={{ color: "#F05" }}
+                  />
+                </Grid>
+                <Grid item xs={6} align="left">
+                  <Typography
+                    style={{ color: "white" }}
+                    align="left"
+                    variant="inherit"
+                  >
+                    Working Hours: {working_hours}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid item xs={12} align="left" style={{ paddingTop: "8px" }}>
+                <Typography
+                  style={{ color: "white" }}
+                  align="left"
+                  variant="inherit"
+                >
+                  Cost for Two: {cost_for_two}
+                </Typography>
+              </Grid>
+            </Box>
           </CardContent>
         </CardActionArea>
-        <Menu/>
-        
+        <Menu id={restaurant_id} />
+
         <CardActions>
           <Grid container alignItems="flex-start">
-            <Typography style={{ paddingRight: 10, paddingLeft: 10,color:"#EFF" }}>
+            <Typography
+              style={{ paddingRight: 10, paddingLeft: 10, color: "#EFF" }}
+            >
               Rate This Restaurant
             </Typography>
           </Grid>
