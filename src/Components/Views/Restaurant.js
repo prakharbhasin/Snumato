@@ -76,8 +76,10 @@ IconContainer.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-function Restaurant() {
+function Restaurant(props) {
   const classes = useStyles();
+
+  const { name, location, working_hours, cost_for_two} = props.location.state
   return (
     <Grid container >
       <Card className={classes.resHead} style={{ background: "black", opacity:"0.90" }}>
@@ -95,12 +97,12 @@ function Restaurant() {
               className={classes.resName}
               style={{color:"#F05"}}
             >
-              Naveen Tea Stall
+              {name}
             </Typography>
             <Box component="fieldset" mb={7} borderColor="transparent" align="right">
               <Grid container>
         <Grid item xs={6}>
-        <Typography  style={{color:"white",}} align="left">CnD Atrium </Typography>
+        <Typography  style={{color:"white",}} align="left">{location} </Typography>
         </Grid>
         <Grid item xs={6}>
         <Rating
@@ -112,11 +114,11 @@ function Restaurant() {
         />
         </Grid>
         <Grid item xs={6} align="left">
-        <Typography style={{color:"white"}} align="left" variant="p">Delivery Time: 45mins</Typography>
+        <Typography style={{color:"white"}} align="left" variant="inherit">Working Hours: {working_hours}</Typography>
         </Grid>
         </Grid>
         <Grid item xs={12} align="left" style={{paddingTop:"8px"}}>
-        <Typography style={{color:"white"}} align="left" variant="p">Cost for Two: Rs. 150</Typography>
+        <Typography style={{color:"white"}} align="left" variant="inherit">Cost for Two: {cost_for_two}</Typography>
         </Grid>
       </Box>
           </CardContent>

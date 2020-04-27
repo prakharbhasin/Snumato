@@ -1,20 +1,33 @@
 import React, { Component } from "react";
 import { Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import CardRestaurant from "./Card_restaurant";
-
 class Restaurant_page extends Component {
-  state = {};
+  state = {
+    restaurants: 0,
+  };
+
+  componentDidMount() {
+    axios
+      .get("http://127.0.0.1:8000/restaurants")
+      .then((res) => res.data)
+      .then((data) => this.setState({ restaurants: data.restaurants }));
+  }
+
   render() {
     return (
       <div>
-        <Grid container justify="space-between">
-          <Grid item>
-            <CardRestaurant
-              name="Naveen Tea House"
-              description="..duh"
-            />
+        <Grid container justify="space-evenly" style={{marginLeft: "5%"}}>
+          {this.state.restaurants &&
+            this.state.restaurants.map((res) => (
+              <Grid item>
+                <CardRestaurant rest={res} name={res.name} description={res.location} />
+              </Grid>
+            ))}
+          {/* <Grid item>
+            <CardRestaurant name="Naveen Tea House" description="..duh" />
           </Grid>
           <Grid item>
             <CardRestaurant
@@ -45,7 +58,7 @@ class Restaurant_page extends Component {
               name="Celeste Cafe"
               description="Chilli Paneer Samosa ftw"
             />
-          </Grid>
+          </Grid> */}
         </Grid>
       </div>
     );

@@ -27,11 +27,24 @@ const useStyles = makeStyles({
 export default function Card_restaurant(props) {
   const classes = useStyles();
   // const custom = customStyles();
-
+  console.log(props.rest)
   return (
-    <Link to="/snumato-dbms/restaurant" style={{ textDecoration: "none" }}>
-      <Grid item xs={6} direction="row" justify="center" alignItems="center">
-        <Card className={classes.root} style={{ background: "black", opacity: "0.95" }}>
+    <Link
+      to={{ pathname: "/snumato-dbms/restaurant", state: props.rest }}
+      style={{ textDecoration: "none" }}
+    >
+      <Grid
+        container
+        item
+        xs={6}
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
+        <Card
+          className={classes.root}
+          style={{ background: "black", opacity: "0.95" }}
+        >
           <CardActionArea>
             <CardContent>
               <CardMedia
