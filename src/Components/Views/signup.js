@@ -46,6 +46,29 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  textfield: {
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInputLabel-root": {
+      color: "rgb(255,0,85)",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&:hover fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+        color: "white",
+      },
+    },
+  }
 }));
 
 export default function SignUp() {
@@ -74,6 +97,7 @@ export default function SignUp() {
                 label="First Name"
                 color="secondary"
                 autoFocus
+                className={classes.textfield}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -86,6 +110,7 @@ export default function SignUp() {
                 name="lastName"
                 autoComplete="lname"
                 color="secondary"
+                className={classes.textfield}
               />
             </Grid>
             <Grid item xs={12}>
@@ -98,6 +123,7 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
                 color="secondary"
+                className={classes.textfield}
               />
             </Grid>
             <Grid item xs={12}>
@@ -111,6 +137,7 @@ export default function SignUp() {
                 id="password"
                 autoComplete="current-password"
                 color="secondary"
+                className={classes.textfield}
               />
             </Grid>
             {/*<Grid item xs={12}>
