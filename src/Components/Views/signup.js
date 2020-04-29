@@ -158,7 +158,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/login_page" variant="body2" color="secondary">
+              <Link href="/snumato-dbms/login_page" variant="body2" color="secondary">
                 Already have an account? Sign in
               </Link>
             </Grid>
