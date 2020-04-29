@@ -197,7 +197,12 @@ export default function SignInSide() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2" color="secondary">
+                <Link 
+                  href="#" 
+                  variant="body2" 
+                  color="secondary"
+                  style={{ textDecoration: "none" }}
+                  >
                   Forgot password?
                 </Link>
               </Grid>
@@ -206,6 +211,7 @@ export default function SignInSide() {
                   href="/snumato-dbms/signup"
                   variant="body2"
                   color="secondary"
+                  style={{ textDecoration: "none" }}
                 >
                   {"Don't have an account? Sign Up"}
                 </Link>
