@@ -29,8 +29,8 @@ import ParticleContainer from "./Layout/ParticleContainer";
 function App() {
   return (
     <div className="App">
+      {/* <ParticleContainer /> */}
       <Router>
-        <ParticleContainer />
         <Navbar>
           <Switch>
             <Route path="/snumato-dbms/" exact component={HomePage} />

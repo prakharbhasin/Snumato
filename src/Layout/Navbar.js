@@ -23,7 +23,6 @@ import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
 import "../resources/CSS/navbar.css";
-import Particles from "react-particles-js";
 
 const BTstyle = {
   opacity: "0.8",
@@ -225,7 +224,7 @@ export default function MiniDrawer(props) {
           <List>
             {["Login", "Support", "About us"].map((text, index) => (
               <Link
-                to="snumato-dbms/login_page"
+                to="/snumato-dbms/login_page"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <ListItem button key={text} className="listItem">

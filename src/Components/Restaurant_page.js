@@ -19,7 +19,7 @@ class Restaurant_page extends Component {
   render() {
     return (
       <div>
-        <Grid container justify="space-evenly" style={{marginLeft: "5%"}}>
+        <Grid container justify="space-evenly" spacing={1} style={{marginLeft: "5%"}}>
           {this.state.restaurants &&
             this.state.restaurants.map((res) => (
               <Grid item>

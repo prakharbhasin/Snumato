@@ -47,69 +47,23 @@ function Menu(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {menu && menu.map((item) => (
-            <TableRow>
-              <TableCell style={{ color: "white" }}>{item.item_name}</TableCell>
-              <TableCell style={{ color: "white" }} align="center">
-                {" "}
-                {item.item_cost}
-              </TableCell>
-              <TableCell align="right">
-                <Button color="secondary" variant="outlined">
-                  Add
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-
-          {/* <TableRow>
-            <TableCell style={{ color: "white" }}>Masala Tea</TableCell>
-            <TableCell style={{ color: "white" }} align="center">
-              {" "}
-              Rs.10
-            </TableCell>
-            <TableCell align="right">
-              <Button color="secondary" variant="outlined">
-                Add
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell style={{ color: "white" }}>Hot Bournvita</TableCell>
-            <TableCell style={{ color: "white" }} align="center">
-              {" "}
-              Rs.30
-            </TableCell>
-            <TableCell align="right">
-              <Button color="secondary" variant="outlined">
-                Add
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell style={{ color: "white" }}>Hot Coffee</TableCell>
-            <TableCell style={{ color: "white" }} align="center">
-              {" "}
-              Rs.20
-            </TableCell>
-            <TableCell align="right">
-              <Button color="secondary" variant="outlined">
-                Add
-              </Button>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell style={{ color: "white" }}>Cold Bournvita</TableCell>
-            <TableCell style={{ color: "white" }} align="center">
-              {" "}
-              Rs.35
-            </TableCell>
-            <TableCell align="right">
-              <Button color="secondary" variant="outlined">
-                Add
-              </Button>
-            </TableCell>
-          </TableRow> */}
+          {menu &&
+            menu.map((item) => (
+              <TableRow>
+                <TableCell style={{ color: "white" }}>
+                  {item.item_name}
+                </TableCell>
+                <TableCell style={{ color: "white" }} align="center">
+                  {" "}
+                  {item.item_cost}
+                </TableCell>
+                <TableCell align="right">
+                  <Button color="secondary" variant="outlined">
+                    Add
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </div>
