@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
     "& label.Mui-focused": {
       color: "white",
     },
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
     "& .MuiInputLabel-root": {
       color: "rgb(255,0,85)",
     },

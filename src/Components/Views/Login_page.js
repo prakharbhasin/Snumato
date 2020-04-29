@@ -73,6 +73,9 @@ const useStyles = makeStyles((theme) => ({
     // opacity:"0.8"
   },
   textfield: {
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
     "& label.Mui-focused": {
       color: "white",
     },
@@ -110,11 +113,6 @@ const useStyles = makeStyles((theme) => ({
   },
   checkbox: {
     backgroundColor: "red",
-  },
-  rememberme: {
-    "& .MuiFormControlLabel-label": {
-      color: "rgb(245,0,87)",
-    },
   },
 }));
 
@@ -171,11 +169,10 @@ export default function SignInSide() {
                 <Checkbox
                   value="remember"
                   color="secondary"
-                  style={{ color: "rgb(245,0,87)" }}
+                  icon={<span className={classes.checkbox} />}
                 />
               }
               label="Remember me"
-              className={classes.rememberme}
             />
             <Button
               type="submit"
@@ -193,7 +190,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/snumato-dbms/signup" variant="body2" color="secondary">
+                <Link href="/signup" variant="body2" color="secondary">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
