@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -93,6 +93,9 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "white",
         color: "white",
       },
+      "& .MuiInputBase-input": {
+        color: "white",
+      },
     },
   },
   avatar: {
@@ -120,7 +123,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  const [email, setemail] = useState(null);
+  const [pass, setpass] = useState(null);
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("email=",email,"pass=",pass);
+  }
+  
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -139,8 +149,9 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5" style={{ color: "#EFF" }}>
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
+              onInput={e=>setemail(e.target.value)}
               variant="outlined"
               margin="normal"
               required
@@ -154,6 +165,7 @@ export default function SignInSide() {
               className={classes.textfield}
             />
             <TextField
+              onInput={e=>setpass(e.target.value)}
               variant="outlined"
               margin="normal"
               required
@@ -193,7 +205,11 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/snumato-dbms/signup" variant="body2" color="secondary">
+                <Link
+                  href="/snumato-dbms/signup"
+                  variant="body2"
+                  color="secondary"
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
