@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Axios from "axios";
+import RegisterSuccess from "../RegisterSuccess";
 
 function Copyright() {
   return (
@@ -77,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [reg, setreg] = useState(false);
 
   const [fname, setfname] = useState(null);
   const [lname, setlname] = useState(null);
@@ -94,11 +96,11 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(JSON.stringify(credentials));
-    Axios.post(
-      "http://127.0.0.1:8000/user/register",
-      JSON.stringify(credentials)
-    )
-      .then((res) => console.log(res))
+    Axios.post("http://127.0.0.1:8000/user/register", credentials)
+      .then((res) => {
+        console.log(res.data);
+        setreg(true);
+      })
       .catch((error) => console.log(error.message));
   };
 
@@ -109,112 +111,121 @@ export default function SignUp() {
       maxWidth="xs"
     >
       <CssBaseline />
-      <div className={classes.paper}>
-        {/*<Avatar className={classes.avatar}>
+      {reg ? (
+        <div className={classes.paper}>
+          {/*<Avatar className={classes.avatar}>
           <LockOutlinedIcon />
   </Avatar>*/}
-        <Typography component="h1" variant="h5" style={{ color: "#EFF" }}>
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                onInput={(e) => setfname(e.target.value)}
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                color="secondary"
-                autoFocus
-                className={classes.textfield}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                onInput={(e) => setlname(e.target.value)}
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                color="secondary"
-                className={classes.textfield}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                onInput={(e) => setemail(e.target.value)}
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                color="secondary"
-                className={classes.textfield}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                onInput={(e) => setpass(e.target.value)}
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                color="secondary"
-                className={classes.textfield}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                onInput={(e) => setmob(e.target.value)}
-                variant="outlined"
-                required
-                fullWidth
-                name="mob"
-                label="Mobile Number"
-                id="mob"
-                autoComplete="mobile no"
-                color="secondary"
-                className={classes.textfield}
-              />
-            </Grid>
-            {/*<Grid item xs={12}>
+          <Typography component="h1" variant="h5" style={{ color: "#EFF" }}>
+            Sign up
+          </Typography>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  onInput={(e) => setfname(e.target.value)}
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  color="secondary"
+                  autoFocus
+                  className={classes.textfield}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  onInput={(e) => setlname(e.target.value)}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="lname"
+                  color="secondary"
+                  className={classes.textfield}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  onInput={(e) => setemail(e.target.value)}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  color="secondary"
+                  className={classes.textfield}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  onInput={(e) => setpass(e.target.value)}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  color="secondary"
+                  className={classes.textfield}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  onInput={(e) => setmob(e.target.value)}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="mob"
+                  label="Mobile Number"
+                  id="mob"
+                  autoComplete="mobile no"
+                  color="secondary"
+                  className={classes.textfield}
+                />
+              </Grid>
+              {/*<Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
   </Grid>*/}
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/snumato-dbms/login_page" variant="body2" color="secondary" style={{ textDecoration: "none" }}>
-                Already have an account? Sign in
-              </Link>
             </Grid>
-          </Grid>
-        </form>
-      </div>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+            >
+              Sign Up
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link
+                  href="/snumato-dbms/login_page"
+                  variant="body2"
+                  color="secondary"
+                  style={{ textDecoration: "none" }}
+                >
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+      ) : (
+        <RegisterSuccess />
+      )}
       <Box mt={5}>
         <Copyright />
       </Box>

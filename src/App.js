@@ -20,7 +20,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./Components/Views/Home_page";
 import LoginPage from "./Components/Views/Login_page";
 import Navbar from "./Layout/Navbar";
-import RestaurantPage from "./Components/Restaurant_page";
+import RestaurantPage from "./Components/Views/Restaurant_page";
 import Restaurant from "./Components/Views/Restaurant";
 import SignUp from "./Components/Views/signup";
 import Cart from "./Components/Views/Cart_page";

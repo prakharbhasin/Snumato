@@ -26,8 +26,10 @@ const useStyles = makeStyles({
 
 export default function Card_restaurant(props) {
   const classes = useStyles();
+
+  const Image = props.rest.restaurant_id < 3 ? `https://github.com/basic-bhavya/snumato-dbms/blob/master/src/resources/${props.rest.restaurant_id}.jpeg` : "https://source.unsplash.com/user/foodess";
   // const custom = customStyles();
-  console.log(props.rest)
+  console.log(props.rest);
   return (
     <Link
       to={{ pathname: "/snumato-dbms/restaurant", state: props.rest }}
@@ -49,7 +51,7 @@ export default function Card_restaurant(props) {
             <CardContent>
               <CardMedia
                 className={classes.media}
-                image="https://source.unsplash.com/user/foodess"
+                image={Image}
                 title={props.name}
               />
               <Typography

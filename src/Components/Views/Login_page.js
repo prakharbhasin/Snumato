@@ -12,6 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
+import Axios from "axios";
 
 function Copyright() {
   return (
@@ -132,6 +133,11 @@ export default function SignInSide() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email=", email, "pass=", pass);
+    Axios.post('http://127.0.0.1:8000/user/login',{
+      'email':email,
+      'password':pass
+    }).then((res) => console.log(res.data))
+    .catch((error) => console.log(error.message));
   };
 
   return (

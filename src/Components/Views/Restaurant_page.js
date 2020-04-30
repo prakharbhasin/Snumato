@@ -3,7 +3,7 @@ import { Button, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import CardRestaurant from "./Card_restaurant";
+import CardRestaurant from "../Card_restaurant";
 class Restaurant_page extends Component {
   state = {
     restaurants: 0,
