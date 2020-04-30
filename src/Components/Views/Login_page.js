@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -13,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import Axios from "axios";
+import { useStoreActions } from "easy-peasy";
 
 function Copyright() {
   return (
@@ -27,30 +27,30 @@ function Copyright() {
   );
 }
 
-const CssTextField = withStyles({
-  root: {
-    "& label.Mui-focused": {
-      color: "white",
-    },
-    "& .MuiInputLabel-root": {
-      color: "rgb(255,0,85)",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "green",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "rgb(255,0,85)",
-      },
-      "&:hover fieldset": {
-        borderColor: "rgb(255,0,85)",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "white",
-      },
-    },
-  },
-})(TextField);
+// const CssTextField = withStyles({
+//   root: {
+//     "& label.Mui-focused": {
+//       color: "white",
+//     },
+//     "& .MuiInputLabel-root": {
+//       color: "rgb(255,0,85)",
+//     },
+//     "& .MuiInput-underline:after": {
+//       borderBottomColor: "green",
+//     },
+//     "& .MuiOutlinedInput-root": {
+//       "& fieldset": {
+//         borderColor: "rgb(255,0,85)",
+//       },
+//       "&:hover fieldset": {
+//         borderColor: "rgb(255,0,85)",
+//       },
+//       "&.Mui-focused fieldset": {
+//         borderColor: "white",
+//       },
+//     },
+//   },
+// })(TextField);
 
 const useStyles = makeStyles((theme) => ({
   spacing: [0, 2, 4, 8],
@@ -117,15 +117,16 @@ const useStyles = makeStyles((theme) => ({
   },
   checkbox: {
     "& .MuiFormControlLabel-label": {
-      color: "rgb(255,0,85)"
+      color: "rgb(255,0,85)",
     },
     "& .MuiCheckbox-root": {
-      color: "rgb(255,0,85)"
-    }
+      color: "rgb(255,0,85)",
+    },
   },
 }));
 
 export default function SignInSide() {
+  const login = useStoreActions((action) => action.login);
   const classes = useStyles();
   const [email, setemail] = useState(null);
   const [pass, setpass] = useState(null);
@@ -133,11 +134,16 @@ export default function SignInSide() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email=", email, "pass=", pass);
-    Axios.post('http://127.0.0.1:8000/user/login',{
-      'email':email,
-      'password':pass
-    }).then((res) => console.log(res.data))
-    .catch((error) => console.log(error.message));
+    Axios.post("http://127.0.0.1:8000/user/login", {
+      email: email,
+      password: pass,
+    })
+      .then((res) => (res = res.data))
+      .then((res) => {
+        console.log(res);
+        if (res.status == "success") login(res.user_data.first_name);
+      })
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -187,7 +193,8 @@ export default function SignInSide() {
               color="secondary"
               className={classes.textfield}
             />
-            <FormControlLabel className={classes.checkbox}
+            <FormControlLabel
+              className={classes.checkbox}
               control={
                 <Checkbox
                   value="remember"
