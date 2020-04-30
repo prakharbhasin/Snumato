@@ -16,7 +16,7 @@ import Axios from "axios";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant="body2" color="secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         SNUMATO
@@ -208,11 +208,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link
-                href="/snumato-dbms/login_page"
-                variant="body2"
-                color="secondary"
-              >
+              <Link href="/snumato-dbms/login_page" variant="body2" color="secondary" style={{ textDecoration: "none" }}>
                 Already have an account? Sign in
               </Link>
             </Grid>
