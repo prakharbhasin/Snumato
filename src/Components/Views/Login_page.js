@@ -115,7 +115,12 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   checkbox: {
-    backgroundColor: "red",
+    "& .MuiFormControlLabel-label": {
+      color: "rgb(255,0,85)"
+    },
+    "& .MuiCheckbox-root": {
+      color: "rgb(255,0,85)"
+    }
   },
 }));
 
@@ -124,11 +129,11 @@ export default function SignInSide() {
   const [email, setemail] = useState(null);
   const [pass, setpass] = useState(null);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("email=",email,"pass=",pass);
-  }
-  
+    console.log("email=", email, "pass=", pass);
+  };
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -149,7 +154,7 @@ export default function SignInSide() {
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
-              onInput={e=>setemail(e.target.value)}
+              onInput={(e) => setemail(e.target.value)}
               variant="outlined"
               margin="normal"
               required
@@ -163,7 +168,7 @@ export default function SignInSide() {
               className={classes.textfield}
             />
             <TextField
-              onInput={e=>setpass(e.target.value)}
+              onInput={(e) => setpass(e.target.value)}
               variant="outlined"
               margin="normal"
               required
@@ -176,12 +181,12 @@ export default function SignInSide() {
               color="secondary"
               className={classes.textfield}
             />
-            <FormControlLabel
+            <FormControlLabel className={classes.checkbox}
               control={
                 <Checkbox
                   value="remember"
                   color="secondary"
-                  icon={<span className={classes.checkbox} />}
+                  // icon={<span/>}
                 />
               }
               label="Remember me"
@@ -197,12 +202,12 @@ export default function SignInSide() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link 
-                  href="#" 
-                  variant="body2" 
+                <Link
+                  href="#"
+                  variant="body2"
                   color="secondary"
                   style={{ textDecoration: "none" }}
-                  >
+                >
                   Forgot password?
                 </Link>
               </Grid>
