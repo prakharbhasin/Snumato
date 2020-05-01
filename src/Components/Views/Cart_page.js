@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect } from "react";
 import {
   Typography,
   Paper,
@@ -16,98 +16,114 @@ import {
 import Serving from "../Serving";
 
 import "../../resources/CSS/cartpage.css";
+import Axios from "axios";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
-class Cart_page extends Component {
-  constructor() {
-    super();
-    this.state = {
-      value: 1,
-    };
-  }
+function Cart_page() {
+  const { cart, totalCost, finalCost } = useStoreState((state) => ({
+    token: state.token,
+    cart: state.cart,
+    isLogged: state.isLogged,
+    totalCost: state.totalCost,
+    finalCost: state.finalCost,
+  }));
 
-  increase = () => {
-    this.setState({ value: this.state.value + 1 });
-  };
+  const fetchCart = useStoreActions((action) => action.fetchCart);
+  console.log(cart);
+  // for (const item in precart) {
+  //   if (cart.hasOwnProperty(item)) {
+  //     cart[] = cart[item];
+  //   }
+  // }
+  // useEffect(()=>fetchCart(token),[])
 
-  decrease = () => {
-    this.setState({ value: this.state.value - 1 });
-  };
-
-  render() {
-    return (
-      <Grid container justify="center">
-        <Grid item xs={7}>
-          <Paper>
-            <Typography variant="h2" align="center" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif",padding:"20px"}}>
-              CART
-            </Typography>
-            <Typography variant="h6" align="left" style={{margin:"10px",fontFamily:"Josefin Sans, sans-serif"}}>
-              We Dem Tourist Cafe
-              </Typography>
-            <TableContainer component={Paper}>
-              <Table aria-label="cart-table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Food Item</TableCell>
-                    <TableCell align="center">Servings</TableCell>
-                    <TableCell align="center">Cost</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                 <TableRow>
-                    <TableCell>Bhasin Bhajia Pao</TableCell>
-                    <TableCell align="center">
-                      <Serving
-                        increase={this.increase}
-                        decrease={this.decrease}
-                        value={this.state.value}
-                      />
-                    </TableCell>
-                    <TableCell align="center"> 
-                    ${this.state.value*520}
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Singh Singhaade</TableCell>
-                    <TableCell align="center">
-                    <Serving
-                        increase={this.increase}
-                        decrease={this.decrease}
-                        value={this.state.value}
-                      />
-                    </TableCell>
-                    <TableCell align="center">
-                        ${this.state.value*140}
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Jain Shikanji</TableCell>
-                    <TableCell align="center">
-                    <Serving
-                        increase={this.increase}
-                        decrease={this.decrease}
-                        value={this.state.value}
-                      />
-                    </TableCell>
-                    <TableCell align="center">
-                      ${this.state.value*300}
-                    </TableCell>
-                  </TableRow>
-                  <br/>
-                  <TableRow><TableCell align="left" style={{fontSize:"19px", color:"#F05",fontFamily:"Josefin Sans, sans-serif"}}>Bill Details</TableCell></TableRow>
-                  <TableCell align="left" fontSize="10px" style={{fontSize:"13px",fontFamily:"Josefin Sans, sans-serif"}}> Net Charge: 200$ <br/> Delivery Charge:  10$ <br/> Total Amount: 210$</TableCell>
+  return (
+    <Grid container justify="center">
+      <Grid item xs={7}>
+        <Paper>
+          <Typography
+            variant="h2"
+            align="center"
+            color="secondary"
+            style={{
+              fontFamily: "Josefin Sans, sans-serif",
+              padding: "20px",
+            }}
+          >
+            CART
+          </Typography>
+          <Typography
+            variant="h6"
+            align="left"
+            style={{ margin: "10px", fontFamily: "Josefin Sans, sans-serif" }}
+          >
+            We Dem Tourist Cafe
+          </Typography>
+          <TableContainer component={Paper}>
+            <Table aria-label="cart-table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Food Item</TableCell>
+                  <TableCell align="center">Servings</TableCell>
+                  <TableCell align="center">Cost</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {cart.map((item) => (
+                  <Fragment key={item.id}>
+                    <TableRow>
+                      <TableCell>{item.item_name}</TableCell>
+                      <TableCell align="center">
+                        <Serving item={item} />
+                      </TableCell>
+                      <TableCell align="center">{item.item_cost}</TableCell>
+                    </TableRow>
+                  </Fragment>
+                ))}
+                <TableRow>
+                  <TableCell
+                    align="left"
+                    style={{
+                      fontSize: "19px",
+                      color: "#F05",
+                      fontFamily: "Josefin Sans, sans-serif",
+                    }}
+                  >
+                    Bill Details
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell
+                    align="left"
+                    fontSize="10px"
+                    style={{
+                      fontSize: "13px",
+                      fontFamily: "Josefin Sans, sans-serif",
+                    }}
+                  >
+                    {" "}
+                    Net Charge: ₹{totalCost} <br /> Delivery Charge: ₹10 <br />{" "}
+                    Total Amount: ₹{Math.ceil(finalCost)}
+                  </TableCell>
                   <TableCell></TableCell>
                   <TableCell>
-                    <Button align="right" variant="contained" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif"}}>Place Order</Button>
+                    <Button
+                      align="right"
+                      variant="contained"
+                      color="secondary"
+                      style={{ fontFamily: "Josefin Sans, sans-serif" }}
+                    >
+                      Place Order
+                    </Button>
                   </TableCell>
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Paper>
-        </Grid>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
       </Grid>
-    );
-  }
+    </Grid>
+  );
 }
 
 export default Cart_page;

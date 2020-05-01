@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme, StylesProvider } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
 import "../resources/CSS/navbar.css";
-import { useStoreState } from "easy-peasy";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 const BTstyle = {
   opacity: "0.8",
@@ -103,13 +103,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MiniDrawer(props) {
+export default function Navbar(props) {
   const { children } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const loggedName = useStoreState((state) => state.loggedName);
-  const isLogged = useStoreState((state) => state.isLogged);
+  const { loggedName, isLogged, token, cart } = useStoreState((state) => ({
+    loggedName: state.loggedName,
+    isLogged: state.isLogged,
+    token: state.token,
+    cart: state.cart,
+  }));
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -117,6 +121,10 @@ export default function MiniDrawer(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const fetchCart = useStoreActions((action) => action.fetchCart);
+  const logout = useStoreActions((action) => action.logout);
+  // useEffect(() => fetchCart, [token, cart]);
 
   return (
     <StylesProvider injectFirst>
@@ -161,11 +169,12 @@ export default function MiniDrawer(props) {
               {isLogged ? (
                 <Button
                   style={BTstyle}
-                  // to="/snumato-dbms/login_page"
+                  to="/snumato-dbms/"
                   color="secondary"
                   variant="text"
                   disableRipple={true}
                   className="BT logo-main"
+                  // onClick={logout}
                 >
                   Hello, {loggedName}
                 </Button>
@@ -189,6 +198,7 @@ export default function MiniDrawer(props) {
                 variant="text"
                 component={Link}
                 className="BT logo-main"
+                onClick={() => fetchCart(token)}
               >
                 <ShoppingCartIcon />
               </IconButton>
@@ -225,6 +235,7 @@ export default function MiniDrawer(props) {
               <Link
                 to="/snumato-dbms"
                 style={{ textDecoration: "none", color: "inherit" }}
+                key={index}
               >
                 <ListItem button key={text} className="listItem">
                   <ListItemIcon style={{ color: "white" }}>
@@ -241,6 +252,7 @@ export default function MiniDrawer(props) {
               <Link
                 to="/snumato-dbms/login_page"
                 style={{ textDecoration: "none", color: "inherit" }}
+                key={index}
               >
                 <ListItem button key={text} className="listItem">
                   <ListItemIcon style={{ color: "white" }}>
