@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
 import "../resources/CSS/navbar.css";
+import { useStoreState } from "easy-peasy";
 
 const BTstyle = {
   opacity: "0.8",
@@ -107,7 +108,8 @@ export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const loggedName = useStoreState((state) => state.loggedName);
+  const isLogged = useStoreState((state) => state.isLogged);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -156,16 +158,29 @@ export default function MiniDrawer(props) {
               direction="row"
               alignItems="flex-start"
             >
-              <Button
-                style={BTstyle}
-                to="/snumato-dbms/login_page"
-                color="secondary"
-                variant="text"
-                component={Link}
-                className="BT logo-main"
-              >
-                LOGIN/SIGN UP
-              </Button>
+              {isLogged ? (
+                <Button
+                  style={BTstyle}
+                  // to="/snumato-dbms/login_page"
+                  color="secondary"
+                  variant="text"
+                  disableRipple={true}
+                  className="BT logo-main"
+                >
+                  Hello, {loggedName}
+                </Button>
+              ) : (
+                <Button
+                  style={BTstyle}
+                  to="/snumato-dbms/login_page"
+                  color="secondary"
+                  variant="text"
+                  component={Link}
+                  className="BT logo-main"
+                >
+                  LOGIN/SIGN UP
+                </Button>
+              )}
               <IconButton
                 aria-label="delete"
                 style={BTstyle}

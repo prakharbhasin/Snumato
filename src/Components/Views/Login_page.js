@@ -12,7 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import Axios from "axios";
-import { useStoreActions } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
+import { Redirect } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -127,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const login = useStoreActions((action) => action.login);
+  const isLogged = useStoreState(state=>state.isLogged);
   const classes = useStyles();
   const [email, setemail] = useState(null);
   const [pass, setpass] = useState(null);
@@ -145,6 +147,10 @@ export default function SignInSide() {
       })
       .catch((error) => console.log(error.message));
   };
+
+  if(isLogged){
+    return <Redirect push to="/snumato-dbms" />;
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
