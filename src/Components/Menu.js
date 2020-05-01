@@ -10,9 +10,11 @@ import {
   TableBody,
 } from "@material-ui/core";
 import axios from "axios";
+import { useStoreActions } from "easy-peasy";
 
 function Menu(props) {
   const [menu, setMenu] = useState(null);
+  const addItem = useStoreActions((action) => action.addtoCart);
 
   useEffect(() => {
     axios
@@ -58,7 +60,11 @@ function Menu(props) {
                   {item.item_cost}
                 </TableCell>
                 <TableCell align="right">
-                  <Button color="secondary" variant="outlined">
+                  <Button
+                    color="secondary"
+                    variant="outlined"
+                    onClick={() => addItem(item.id)}
+                  >
                     Add
                   </Button>
                 </TableCell>

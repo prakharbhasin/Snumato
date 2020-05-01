@@ -18,7 +18,7 @@ function App() {
   return (
     <StoreProvider store={store}>
       <div className="App">
-        <ParticleContainer />
+        {/* <ParticleContainer /> */}
         <Router>
           <Navbar>
             <Switch>
