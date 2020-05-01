@@ -45,7 +45,7 @@ class Cart_page extends Component {
           <Paper style={{background:"black"}}>{this.state.confetti?
           <div style={{background:"black", width:"150px",height:"50em"}} align="center">
           
-            <h1 style={{color:"white",paddingTop:"200%", marginLeft:"125%",whiteSpace:"nowrap",fontSize:"50px"}}>YOUR ORDER WAS PLACED!</h1>
+            <h1 style={{color:"white",paddingTop:"200%", marginLeft:"25%",whiteSpace:"nowrap",fontSize:"50px"}}>YOUR ORDER WAS PLACED!</h1>
             
             
           <Confetti initialVelocityY="700" initialVelocityX="10" numberOfPieces="1000">
