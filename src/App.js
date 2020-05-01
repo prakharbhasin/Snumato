@@ -9,6 +9,7 @@ import RestaurantPage from "./Components/Views/Restaurant_page";
 import Restaurant from "./Components/Views/Restaurant";
 import SignUp from "./Components/Views/signup";
 import Cart from "./Components/Views/Cart_page";
+import Account from "./Components/Views/Account_page"
 import ParticleContainer from "./Layout/ParticleContainer";
 
 //easy-peasy state store
@@ -40,6 +41,7 @@ function App() {
               />
               <Route path="/snumato-dbms/signup" exact component={SignUp} />
               <Route path="/snumato-dbms/cart" exact component={Cart} />
+              <Route path="/snumato-dbms/account" exact component={Account} />
             </Switch>
           </Navbar>
         </Router>

@@ -12,7 +12,7 @@ const Serving = (props) => {
   const token = useStoreState((state) => state.token);
 
   return (
-    <ButtonGroup size="small" aria-label="quantity-selector" color="secondary">
+    <ButtonGroup size="large" aria-label="quantity-selector" color="secondary">
       <Button
         onClick={() => {
           setqty(qty - 1);

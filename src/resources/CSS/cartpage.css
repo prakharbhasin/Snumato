@@ -1,3 +1,5 @@
-.heading {
-  font-family: "Baloo Da 2", cursive;
+
+.MuiTableCell-root{
+  border-bottom: none !important;
+  color: white
 }
