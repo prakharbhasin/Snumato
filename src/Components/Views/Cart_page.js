@@ -55,9 +55,9 @@ function Cart_page() {
             >
               <h1
                 style={{
-                  // color: "white",
+                  color: "white",
                   paddingTop: "200%",
-                  marginLeft: "125%",
+                  marginLeft: "25%",
                   whiteSpace: "nowrap",
                   fontSize: "50px",
                 }}
