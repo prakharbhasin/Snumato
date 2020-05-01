@@ -6,8 +6,8 @@ const Serving = (props) => {
   console.log(props);
 
   return (
-    <ButtonGroup size="small" aria-label="quantity-selector" color="secondary">
-      <Button onClick={props.decrease}>-</Button>
+    <ButtonGroup size="large" aria-label="quantity-selector" color="secondary">
+      <Button onClick={props.decrease} >-</Button>
       <Button>{props.value}</Button>
       <Button onClick={props.increase}>+</Button>
     </ButtonGroup>

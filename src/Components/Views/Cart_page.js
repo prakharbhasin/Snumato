@@ -14,6 +14,7 @@ import {
   ButtonGroup,
 } from "@material-ui/core";
 import Serving from "../Serving";
+import Confetti from "react-confetti"
 
 import "../../resources/CSS/cartpage.css";
 
@@ -22,6 +23,7 @@ class Cart_page extends Component {
     super();
     this.state = {
       value: 1,
+      confetti:false
     };
   }
 
@@ -32,19 +34,33 @@ class Cart_page extends Component {
   decrease = () => {
     this.setState({ value: this.state.value - 1 });
   };
+  handleClick=(e)=>{
+    this.setState({confetti:true})
+  }
 
   render() {
     return (
       <Grid container justify="center">
         <Grid item xs={7}>
-          <Paper>
+          <Paper style={{background:"black"}}>{this.state.confetti?
+          <div style={{background:"black", width:"150px",height:"50em"}} align="center">
+          
+            <h1 style={{color:"white",paddingTop:"200%", marginLeft:"125%",whiteSpace:"nowrap",fontSize:"50px"}}>YOUR ORDER WAS PLACED!</h1>
+            
+            
+          <Confetti initialVelocityY="700" initialVelocityX="10" numberOfPieces="1000">
+          
+          </Confetti>
+          </div>
+          :
+          <div>
             <Typography variant="h2" align="center" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif",padding:"20px"}}>
               CART
             </Typography>
-            <Typography variant="h6" align="left" style={{margin:"10px",fontFamily:"Josefin Sans, sans-serif"}}>
+            <Typography variant="h6" align="left" style={{margin:"10px",fontFamily:"Josefin Sans, sans-serif",color:"white"}}>
               We Dem Tourist Cafe
               </Typography>
-            <TableContainer component={Paper}>
+            
               <Table aria-label="cart-table">
                 <TableHead>
                   <TableRow>
@@ -98,11 +114,12 @@ class Cart_page extends Component {
                   <TableCell align="left" fontSize="10px" style={{fontSize:"13px",fontFamily:"Josefin Sans, sans-serif"}}> Net Charge: 200$ <br/> Delivery Charge:  10$ <br/> Total Amount: 210$</TableCell>
                   <TableCell></TableCell>
                   <TableCell>
-                    <Button align="right" variant="contained" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif"}}>Place Order</Button>
+                    <Button align="right" variant="contained" color="secondary" style={{fontFamily:"Josefin Sans, sans-serif"}} onClick={this.handleClick}>Place Order</Button>
                   </TableCell>
                 </TableBody>
               </Table>
-            </TableContainer>
+              </div>
+  }
           </Paper>
         </Grid>
       </Grid>

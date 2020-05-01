@@ -18,7 +18,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-
 import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
@@ -161,7 +160,7 @@ export default function MiniDrawer(props) {
               {isLogged ? (
                 <Button
                   style={BTstyle}
-                  // to="/snumato-dbms/login_page"
+                  to="/snumato-dbms/account"
                   color="secondary"
                   variant="text"
                   disableRipple={true}
