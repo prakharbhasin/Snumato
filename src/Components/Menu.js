@@ -9,11 +9,13 @@ import {
   TableCell,
   TableBody,
 } from "@material-ui/core";
+import CheckCircleRoundedIcon from "@material-ui/icons/CheckCircleRounded";
 import axios from "axios";
 import { useStoreActions } from "easy-peasy";
 
 function Menu(props) {
   const [menu, setMenu] = useState(null);
+  const [isAdded, add] = useState([]);
   const addItem = useStoreActions((action) => action.addtoCart);
 
   useEffect(() => {
@@ -51,7 +53,7 @@ function Menu(props) {
         <TableBody>
           {menu &&
             menu.map((item) => (
-              <TableRow>
+              <TableRow key={item.id}>
                 <TableCell style={{ color: "white" }}>
                   {item.item_name}
                 </TableCell>
@@ -63,7 +65,9 @@ function Menu(props) {
                   <Button
                     color="secondary"
                     variant="outlined"
-                    onClick={() => addItem(item.id)}
+                    onClick={() => {
+                      addItem(item);
+                    }}
                   >
                     Add
                   </Button>

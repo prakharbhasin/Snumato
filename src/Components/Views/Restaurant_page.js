@@ -26,7 +26,7 @@ class Restaurant_page extends Component {
         >
           {this.state.restaurants &&
             this.state.restaurants.map((res) => (
-              <Grid item>
+              <Grid item key={res.restaurant_id}>
                 <CardRestaurant
                   rest={res}
                   name={res.name}

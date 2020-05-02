@@ -128,7 +128,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const login = useStoreActions((action) => action.login);
-  const isLogged = useStoreState(state=>state.isLogged);
+  const { isLogged } = useStoreState((state) => ({
+    isLogged: state.isLogged,
+  }));
   const classes = useStyles();
   const [email, setemail] = useState(null);
   const [pass, setpass] = useState(null);
@@ -142,13 +144,13 @@ export default function SignInSide() {
     })
       .then((res) => (res = res.data))
       .then((res) => {
-        console.log(res);
-        if (res.status == "success") login(res.user_data.first_name);
+        console.log(res.token);
+        if (res.status == "success") login(res);
       })
       .catch((error) => console.log(error.message));
   };
 
-  if(isLogged){
+  if (isLogged) {
     return <Redirect push to="/snumato-dbms" />;
   }
 

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { StoreProvider, createStore } from "easy-peasy";
+import { StoreProvider, createStore, useStoreActions } from "easy-peasy";
 import model from "./state-management/model";
 import HomePage from "./Components/Views/Home_page";
 import LoginPage from "./Components/Views/Login_page";

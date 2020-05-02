@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import "../../resources/CSS/homepage.css"
+import "../../resources/CSS/homepage.css";
 import { Button, Grid } from "@material-ui/core";
+import { useStoreState } from "easy-peasy";
 
 // const BTstyle = {
 //   opacity: "0.8",
@@ -13,12 +14,12 @@ import { Button, Grid } from "@material-ui/core";
 // };
 
 // TODO : Variable size of cards to be made constant
-class home_page extends Component {
-  state = {};
-  render() {
-    return (
-      <div>
-        {/* <Grid container justify="flex-end" direction="row" alignItems="flex-start">
+const Home_page = () => {
+  const isLogged = useStoreState((state) => state.isLogged);
+
+  return (
+    <div>
+      {/* <Grid container justify="flex-end" direction="row" alignItems="flex-start">
         <Button
           style={BTstyle}
           to="/login_page"
@@ -30,15 +31,38 @@ class home_page extends Component {
           LOGIN/SIGN UP
         </Button>
         </Grid> */}
-        <Grid
-          container
-          justify="space-evenly"
-          // direction="column"
-          alignItems="stretch"
-        >
+      <Grid
+        container
+        justify="space-evenly"
+        // direction="column"
+        alignItems="stretch"
+      >
+        {isLogged ? (
+          <Fragment>
+            <Button
+              className="BT"
+              to="/snumato-dbms/Restaurant_page"
+              color="secondary"
+              variant="contained"
+              component={Link}
+              justify="center"
+            >
+              BROWSE
+            </Button>
+            <Button
+              to="/snumato-dbms/account"
+              color="secondary"
+              variant="contained"
+              component={Link}
+              className="BT"
+            >
+              ACCOUNT
+            </Button>
+          </Fragment>
+        ) : (
           <Button
             className="BT"
-            to="/snumato-dbms/account"
+            to="/snumato-dbms/Restaurant_page"
             color="secondary"
             variant="contained"
             component={Link}
@@ -46,19 +70,10 @@ class home_page extends Component {
           >
             BROWSE
           </Button>
-          {/*<Button
-            to="/login_page"
-            color="secondary"
-            variant="contained"
-            component={Link}
-            className="BT"
-          >
-            LOGIN/SIGN UP
-          </Button>*/}
-        </Grid>
-      </div>
-    );
-  }
-}
+        )}
+      </Grid>
+    </div>
+  );
+};
 
-export default home_page;
+export default Home_page;
