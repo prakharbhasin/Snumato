@@ -22,17 +22,15 @@ import Serving from "../Serving";
 import Confetti from "react-confetti";
 import { makeStyles} from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
-import Axios from "axios";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreState } from "easy-peasy";
 
 function Cart_page() {
   const { cart, totalCost, finalCost } = useStoreState((state) => ({
-    token: state.token,
     cart: state.cart,
-    isLogged: state.isLogged,
     totalCost: state.totalCost,
     finalCost: state.finalCost,
   }));
+
   const useStyles = makeStyles((theme) => ({
   textfield: {
     "& .MuiInputBase-input": {
@@ -71,14 +69,19 @@ function Cart_page() {
     setconfetti(true);
   };
 
-  const fetchCart = useStoreActions((action) => action.fetchCart);
-  console.log(cart);
+  //const fetchCart = useStoreActions((action) => action.fetchCart);
+  //console.log(cart);
   // for (const item in precart) {
   //   if (cart.hasOwnProperty(item)) {
   //     cart[] = cart[item];
   //   }
   // }
   // useEffect(()=>fetchCart(token),[])
+  //const { cart, totalCost, finalCost } = useStoreState((state) => ({
+    //cart: state.cart,
+    //totalCost: state.totalCost,
+    //finalCost: state.finalCost,
+  //}));
 
   const [value, setValue] = React.useState("");
 
