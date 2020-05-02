@@ -21,6 +21,9 @@ import "../../resources/CSS/account.css";
 
 function Account_page(props) {
   const loggedName = useStoreState((state) => state.loggedName);
+  const loggedFName = useStoreState((state) => state.loggedFName);
+  const phno = useStoreState((state) => state.phno);
+  const mail = useStoreState((state) => state.mail);
   const [showItem, setShowItem] = useState(false);
   const handleHover = (e) => {
     setShowItem(true);
@@ -59,7 +62,7 @@ function Account_page(props) {
               color="secondary"
               style={{ fontFamily: "Josefin Sans, sans-serif" }}
             >
-              {loggedName}
+              {loggedName} {loggedFName}
             </Typography>
           </Grid>
 
@@ -78,7 +81,7 @@ function Account_page(props) {
                       fontFamily: "Josefin Sans, sans-serif",
                     }}
                   >
-                    pbhasin400@gmail.com
+                    {mail}
                   </Typography>
                 </TableCell>
               </TableRow>
@@ -95,7 +98,7 @@ function Account_page(props) {
                       fontFamily: "Josefin Sans, sans-serif",
                     }}
                   >
-                    9899169906{" "}
+                    {phno}
                   </Typography>
                 </TableCell>
               </TableRow>

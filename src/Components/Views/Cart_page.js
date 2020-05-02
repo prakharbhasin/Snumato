@@ -12,10 +12,15 @@ import {
   Button,
   IconButton,
   ButtonGroup,
+  Radio,
+  FormControlLabel,
+  RadioGroup,
+  TextField
 } from "@material-ui/core";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Serving from "../Serving";
 import Confetti from "react-confetti";
-
+import { makeStyles} from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
 import Axios from "axios";
 import { useStoreState, useStoreActions } from "easy-peasy";
@@ -28,6 +33,37 @@ function Cart_page() {
     totalCost: state.totalCost,
     finalCost: state.finalCost,
   }));
+  const useStyles = makeStyles((theme) => ({
+  textfield: {
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInputLabel-root": {
+      color: "rgb(255,0,85)",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&:hover fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+        color: "white",
+      },
+      "& .MuiInputBase-input": {
+        color: "white",
+      },
+    },
+  },
+}));
 
   const [confetti, setconfetti] = useState(false);
 
@@ -43,6 +79,13 @@ function Cart_page() {
   //   }
   // }
   // useEffect(()=>fetchCart(token),[])
+
+  const [value, setValue] = React.useState("");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    console.log(value)
+  };
 
   return (
     <Grid container justify="center">
@@ -129,6 +172,18 @@ function Cart_page() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
+                    <TableCell>
+                      <Grid container spacing={1} alignItems="flex-end">
+                        <Grid item>
+                          <LocationOnIcon color="secondary" />
+                        </Grid>
+                        <Grid item>
+                          <TextField autoFocus id="input-with-icon-grid" label="Address" color="secondary"/>
+                        </Grid>
+                      </Grid>
+                   </TableCell>
+                  </TableRow>
+                  <TableRow>
                     <TableCell
                       align="left"
                       fontSize="10px"
@@ -141,10 +196,20 @@ function Cart_page() {
                       Net Charge: ₹{totalCost} <br /> Delivery Charge: ₹10{" "}
                       <br /> Total Amount: ₹{Math.ceil(finalCost)}
                     </TableCell>
-                    <TableCell></TableCell>
                     <TableCell>
+                    </TableCell>
+                    <TableCell style={{color:"white"}} alignItems="right">
+                      <RadioGroup row align="right" value={value} onChange={handleChange}>
+                      <FormControlLabel value="PaytM" control={<Radio style={{color:"#F05"}} />} label="PayTM" labelPlacement="end"/>
+                      <FormControlLabel value="UPI" control={<Radio style={{color:"#F05"}} />} label="UPI" labelPlacement="end" />
+                      <FormControlLabel value="COD" control={<Radio style={{color:"#F05"}} />} label="COD" labelPlacement="end"/>
+                      </RadioGroup>
+                    </TableCell>
+                    <TableCell>
+                    </TableCell>
+                    <TableCell align="center">
                       <Button
-                        align="right"
+                        align="center"
                         variant="contained"
                         color="secondary"
                         style={{ fontFamily: "Josefin Sans, sans-serif" }}

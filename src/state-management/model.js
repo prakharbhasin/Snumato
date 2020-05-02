@@ -6,6 +6,9 @@ import { Redirect } from "react-router-dom";
 export default {
   //* states
   loggedName: null,
+  loggedFName:null,
+  phno:null,
+  mail:null,
   token: "",
   isLogged: false,
   cart: [],
@@ -21,6 +24,9 @@ export default {
     console.log("log=", state.isLogged);
     console.log(token);
     state.loggedName = user_data.first_name;
+    state.loggedFName=user_data.last_name;
+    state.phno=user_data.mobile_num;
+    state.mail=user_data.email;
     state.token = token;
   }),
 

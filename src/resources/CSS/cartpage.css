@@ -3,3 +3,13 @@
   border-bottom: none !important;
   color: white
 }
+
+#input-with-icon-grid{
+  color:white
+}
+
+#input-with-icon-grid:focus{
+  color: white;
+  border-color:white
+}
+
