@@ -2,14 +2,15 @@ import React from "react";
 import { action, thunk } from "easy-peasy";
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default {
   //* states
   loggedName: null,
-  loggedFName:null,
-  phno:null,
-  mail:null,
-  token: "",
+  name: null,
+  phno: null,
+  mail: null,
+  token: null,
   isLogged: false,
   cart: [],
   totalCost: 0,
@@ -24,17 +25,25 @@ export default {
     console.log("log=", state.isLogged);
     console.log(token);
     state.loggedName = user_data.first_name;
-    state.loggedFName=user_data.last_name;
-    state.phno=user_data.mobile_num;
-    state.mail=user_data.email;
+    state.name = user_data.first_name + " " + user_data.last_name;
+    state.phno = user_data.mobile_num;
+    state.mail = user_data.email;
     state.token = token;
+    Cookies.set("user", {
+      token: state.token,
+      loggedName: state.loggedName,
+      name: state.name,
+      mail: state.mail,
+      phno: state.phno,
+      isLogged: state.isLogged,
+    });
   }),
 
   //! LOGOUT
   logout: action((state) => {
     state.isLogged = false;
-    state.loggedName = null;
-    state.token = "";
+    // state.loggedName = null;
+    // state.token = "";
     return <Redirect to="/snuamto-dbms" />;
   }),
 
@@ -66,6 +75,21 @@ export default {
     state.cart = cart.data;
     state.totalCost = cart.total_cost;
     state.finalCost = cart.final_cost;
+  }),
+
+  //! Auth from Cookies
+  Auth: action((state) => {
+    const info = Cookies.get("user");
+    // console.log(JSON.parse(info));
+    const { loggedName, name, mail, phno, token, isLogged } = JSON.parse(info);
+    state.loggedName = loggedName;
+    state.name = name;
+    state.mail = mail;
+    state.phno = phno;
+    state.isLogged = isLogged;
+    state.token = token;
+    // console.log("Auth happened with values");
+    // console.log(state.loggedName, state.token);
   }),
 
   //* Thunks

@@ -18,7 +18,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
 import "../resources/CSS/navbar.css";
@@ -171,9 +171,10 @@ export default function Navbar(props) {
                   to="/snumato-dbms/account"
                   color="secondary"
                   variant="text"
-                  disableRipple={true}
+                  // disableRipple={true}
                   className="BT logo-main"
-                  // onClick={logout}
+                  component={Link}
+                  // onClick={toAccountpage}
                 >
                   Hello, {loggedName}
                 </Button>
