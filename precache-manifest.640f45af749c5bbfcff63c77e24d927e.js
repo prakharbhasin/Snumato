@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9cb29fdb3b5838b6097ac4f25db02ee7",
+    "revision": "079231aca6f909c412c5d41be9731bc7",
     "url": "/snumato-dbms/index.html"
   },
   {
-    "revision": "20b502fabe169dbb218a",
-    "url": "/snumato-dbms/static/css/main.d11bfa0f.chunk.css"
+    "revision": "31894c66d696d61a48bc",
+    "url": "/snumato-dbms/static/css/main.dcae41cd.chunk.css"
   },
   {
-    "revision": "51d19e9deb502f3635bd",
-    "url": "/snumato-dbms/static/js/2.ed61481a.chunk.js"
+    "revision": "ef39be78102672ba3943",
+    "url": "/snumato-dbms/static/js/2.a5d63bfe.chunk.js"
   },
   {
     "revision": "4af2acf83d463b291435d0ee1059b447",
-    "url": "/snumato-dbms/static/js/2.ed61481a.chunk.js.LICENSE.txt"
+    "url": "/snumato-dbms/static/js/2.a5d63bfe.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "20b502fabe169dbb218a",
-    "url": "/snumato-dbms/static/js/main.2f59f896.chunk.js"
+    "revision": "31894c66d696d61a48bc",
+    "url": "/snumato-dbms/static/js/main.21a391d0.chunk.js"
   },
   {
     "revision": "3b6136dd7b1db5f08695",
