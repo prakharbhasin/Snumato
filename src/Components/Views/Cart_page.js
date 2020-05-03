@@ -19,6 +19,7 @@ import {
 } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Serving from "../Serving";
+import CartItem from "../CartItem";
 import Confetti from "react-confetti";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
@@ -29,11 +30,6 @@ function Cart_page() {
     cart: state.cart,
     totalCost: state.totalCost,
     finalCost: state.finalCost,
-  }));
-
-  const { deleteItem, fetchCart } = useStoreActions((action) => ({
-    deleteItem: action.deleteItem,
-    fetchCart: action.fetchCart,
   }));
 
   const useStyles = makeStyles((theme) => ({
@@ -158,28 +154,7 @@ function Cart_page() {
                 <TableBody>
                   {/* {console.log(cart)} */}
                   {cart &&
-                    cart.map((item) => (
-                      <Fragment key={item.id}>
-                        <TableRow>
-                          <TableCell>{item.item_name}</TableCell>
-                          <TableCell align="center">
-                            <Serving item={item} />
-                          </TableCell>
-                          <TableCell align="center">{item.item_cost}</TableCell>
-                          <TableCell align="center">
-                            <Button
-                              variant="outlined"
-                              color="secondary"
-                              onClick={() => {
-                                deleteItem(item);
-                              }}
-                            >
-                              X
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                      </Fragment>
-                    ))}
+                    cart.map((item) => <CartItem item={item} key={item.id} />)}
                   <TableRow>
                     <TableCell
                       align="left"

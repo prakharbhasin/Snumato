@@ -51,7 +51,6 @@ export default {
 
   // ! ADD TO CART
   addtoCart: action((state, item) => {
-    state.cart = [...state.cart, item];
     Axios.post(
       "http://localhost:8000/addtocart",
       {
@@ -68,6 +67,7 @@ export default {
       .then((res) => res.data)
       .then((res) => console.log(res))
       .catch((error) => error.message);
+    // state.cart = [...state.cart, item];
     console.log("cart of", state.loggedName, "has: ");
     console.log(state.cart);
   }),
