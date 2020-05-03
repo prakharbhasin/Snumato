@@ -36,7 +36,7 @@ export default {
       mail: state.mail,
       phno: state.phno,
       isLogged: state.isLogged,
-      cart: state.cart,
+      // cart: state.cart,
     });
   }),
 
@@ -70,6 +70,24 @@ export default {
       .catch((error) => error.message);
     console.log("cart of", state.loggedName, "has: ");
     console.log(state.cart);
+  }),
+
+  //! Delete item
+  deleteItem: action((state, item) => {
+    console.log(item);
+    Axios.post(
+      "http://localhost:8000/deleteitem",
+      {
+        item_id: item.item_id,
+      },
+      {
+        headers: {
+          Authorization: `Token ${state.token}`,
+        },
+      }
+    )
+      .then((res) => res.data)
+      .then((res) => console.log(res));
   }),
 
   //!Fill Cart
@@ -113,12 +131,17 @@ export default {
 
   //! Update Cart
   updateCart: thunk(async (actions, payload) => {
-    console.log(payload.item.id, payload.token);
+    console.log(payload);
+    console.log(
+      payload.item.item_id,
+      "new quantity=",
+      payload.item.item_quantity + payload.val
+    );
     await Axios.post(
       "http://localhost:8000/updatecart",
       {
-        item_id: payload.id,
-        quantity: payload.item_quantity + 1,
+        item_id: payload.item.item_id,
+        quantity: payload.item.item_quantity + payload.val,
       },
       {
         headers: {
@@ -126,5 +149,6 @@ export default {
         },
       }
     ).then((res) => console.log("update cart result =", res.data));
+    actions.fetchCart(payload.token);
   }),
 };

@@ -8,12 +8,15 @@ import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import Snackbar from "@material-ui/core/Snackbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import Axios from "axios";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { Redirect } from "react-router-dom";
+import { IconButton } from "@material-ui/core";
+import CloseIcon from "@material-ui/icons/Close";
 
 function Copyright() {
   return (
@@ -135,6 +138,8 @@ export default function SignInSide() {
   const [email, setemail] = useState(null);
   const [pass, setpass] = useState(null);
 
+  const [errorCheck, setError] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("email=", email, "pass=", pass);
@@ -146,6 +151,9 @@ export default function SignInSide() {
       .then((res) => {
         console.log(res.token);
         if (res.status == "success") login(res);
+        else {
+          setError(true);
+        }
       })
       .catch((error) => console.log(error.message));
   };
@@ -221,6 +229,28 @@ export default function SignInSide() {
             >
               Sign In
             </Button>
+            <Snackbar
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              open={errorCheck}
+              autoHideDuration={600}
+              // onClose={handleClose}
+              message="Incorrect Email ID or Password"
+              action={
+                <React.Fragment>
+                  <IconButton
+                    size="small"
+                    aria-label="close"
+                    color="inherit"
+                    onClick={() => setError(false)}
+                  >
+                    <CloseIcon fontSize="small" />
+                  </IconButton>
+                </React.Fragment>
+              }
+            />
             <Grid container>
               <Grid item xs>
                 <Link

@@ -4,27 +4,28 @@ import Axios from "axios";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
 const Serving = (props) => {
-  const [qty, setqty] = useState(1);
   //   const { increase, decrease } = props.state;
   // console.log(props);
   const { item } = props;
   const updateCart = useStoreActions((action) => action.updateCart);
   const token = useStoreState((state) => state.token);
 
+  const increase = 1,
+    decrease = -1;
+
   return (
     <ButtonGroup size="large" aria-label="quantity-selector" color="secondary">
       <Button
         onClick={() => {
-          setqty(qty - 1);
+          updateCart({ item, token, val: decrease });
         }}
       >
         -
       </Button>
-      <Button>{qty}</Button>
+      <Button>{item.item_quantity}</Button>
       <Button
         onClick={() => {
-          setqty(qty + 1);
-          updateCart({ item, token });
+          updateCart({ item, token, val: increase });
         }}
       >
         +

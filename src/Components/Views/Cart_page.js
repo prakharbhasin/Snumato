@@ -22,13 +22,18 @@ import Serving from "../Serving";
 import Confetti from "react-confetti";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
-import { useStoreState } from "easy-peasy";
+import { useStoreState, useStoreActions, action } from "easy-peasy";
 
 function Cart_page() {
   const { cart, totalCost, finalCost } = useStoreState((state) => ({
     cart: state.cart,
     totalCost: state.totalCost,
     finalCost: state.finalCost,
+  }));
+
+  const { deleteItem, fetchCart } = useStoreActions((action) => ({
+    deleteItem: action.deleteItem,
+    fetchCart: action.fetchCart,
   }));
 
   const useStyles = makeStyles((theme) => ({
@@ -92,7 +97,7 @@ function Cart_page() {
 
   return (
     <Grid container item justify="center">
-      {/* <Grid item xs={7}> */}
+      <Grid item xs={7}>
         <Paper style={{ backgroundColor: "black" }}>
           {confetti ? (
             <div
@@ -151,17 +156,30 @@ function Cart_page() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {cart.map((item) => (
-                    <Fragment key={item.id}>
-                      <TableRow>
-                        <TableCell>{item.item_name}</TableCell>
-                        <TableCell align="center">
-                          <Serving item={item} />
-                        </TableCell>
-                        <TableCell align="center">{item.item_cost}</TableCell>
-                      </TableRow>
-                    </Fragment>
-                  ))}
+                  {/* {console.log(cart)} */}
+                  {cart &&
+                    cart.map((item) => (
+                      <Fragment key={item.id}>
+                        <TableRow>
+                          <TableCell>{item.item_name}</TableCell>
+                          <TableCell align="center">
+                            <Serving item={item} />
+                          </TableCell>
+                          <TableCell align="center">{item.item_cost}</TableCell>
+                          <TableCell align="center">
+                            <Button
+                              variant="outlined"
+                              color="secondary"
+                              onClick={() => {
+                                deleteItem(item);
+                              }}
+                            >
+                              X
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      </Fragment>
+                    ))}
                   <TableRow>
                     <TableCell
                       align="left"
@@ -236,7 +254,7 @@ function Cart_page() {
                         />
                       </RadioGroup>
                     </TableCell>
-                    <TableCell></TableCell>
+                    {/* <TableCell></TableCell> */}
                     <TableCell align="center">
                       <Button
                         align="center"
@@ -255,7 +273,7 @@ function Cart_page() {
             </Fragment>
           )}
         </Paper>
-      {/* </Grid> */}
+      </Grid>
     </Grid>
   );
 }
