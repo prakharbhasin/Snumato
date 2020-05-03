@@ -23,7 +23,7 @@ const Serving = (props) => {
       <Button>{qty}</Button>
       <Button
         onClick={() => {
-          // setqty(qty + 1);
+          setqty(qty + 1);
           updateCart({ item, token });
         }}
       >

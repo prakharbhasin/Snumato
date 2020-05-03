@@ -4,8 +4,8 @@ import { useStoreState, useStoreActions } from "easy-peasy";
 
 const readCookies = (Auth) => {
   const user = Cookies.get("user");
-  const token = JSON.parse(user).token;
-  if (token) {
+  if (user) {
+    // const token = JSON.parse(user).token;
     Auth();
     // console.log("token is", user.token);
   }

@@ -49,7 +49,7 @@ const Home_page = () => {
             >
               BROWSE
             </Button>
-            <Button
+            {/* <Button
               to="/snumato-dbms/account"
               color="secondary"
               variant="contained"
@@ -57,7 +57,7 @@ const Home_page = () => {
               className="BT"
             >
               ACCOUNT
-            </Button>
+            </Button> */}
           </Fragment>
         ) : (
           <Button

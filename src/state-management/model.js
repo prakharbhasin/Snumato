@@ -36,12 +36,14 @@ export default {
       mail: state.mail,
       phno: state.phno,
       isLogged: state.isLogged,
+      cart: state.cart,
     });
   }),
 
   //! LOGOUT
   logout: action((state) => {
     state.isLogged = false;
+    Cookies.remove("user");
     // state.loggedName = null;
     // state.token = "";
     return <Redirect to="/snuamto-dbms" />;
@@ -88,6 +90,7 @@ export default {
     state.phno = phno;
     state.isLogged = isLogged;
     state.token = token;
+    // state.cart = cart;
     // console.log("Auth happened with values");
     // console.log(state.loggedName, state.token);
   }),
@@ -95,14 +98,16 @@ export default {
   //* Thunks
   //! Fetch Cart
   fetchCart: thunk(async (actions, payload) => {
-    console.log("token=", payload);
-    const cart = await Axios.get("http://127.0.0.1:8000/cart", {
-      headers: {
-        Authorization: `Token ${payload}`,
-      },
-    }).then((res) => res.data);
-    // .then((res) => res.data);
-    actions.fillCart(cart);
+    if (payload) {
+      console.log("token=", payload);
+      const cart = await Axios.get("http://127.0.0.1:8000/cart", {
+        headers: {
+          Authorization: `Token ${payload}`,
+        },
+      }).then((res) => res.data);
+      // .then((res) => res.data);
+      actions.fillCart(cart);
+    }
     // console.log(getStoreState().cart);
   }),
 
@@ -113,7 +118,7 @@ export default {
       "http://localhost:8000/updatecart",
       {
         item_id: payload.id,
-        quantity: payload.item_quantity,
+        quantity: payload.item_quantity + 1,
       },
       {
         headers: {

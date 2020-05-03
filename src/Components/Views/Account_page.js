@@ -50,7 +50,6 @@ function Account_page(props) {
                 item
                 xs={6}
                 align="center"
-                alignItems="center"
                 style={{
                   paddingTop: "3%",
                   marginLeft: "25%",
@@ -81,7 +80,6 @@ function Account_page(props) {
                 item
                 xs={6}
                 align="center"
-                alignItems="center"
                 style={{ marginLeft: "25%", paddingBottom: "5%" }}
               >
                 <Button variant="contained" color="secondary" onClick={logout}>
@@ -91,40 +89,42 @@ function Account_page(props) {
 
               <Grid item xs={8}>
                 <Table>
-                  <TableRow>
-                    <TableCell>
-                      <Typography variant="h6" color="secondary">
-                        Email ID:{" "}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        style={{
-                          color: "white",
-                          fontFamily: "Josefin Sans, sans-serif",
-                        }}
-                      >
-                        {mail}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>
-                      <Typography variant="h6" color="secondary">
-                        Phone Number:{" "}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        style={{
-                          color: "white",
-                          fontFamily: "Josefin Sans, sans-serif",
-                        }}
-                      >
-                        {phno}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>
+                        <Typography variant="h6" color="secondary">
+                          Email ID:{" "}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography
+                          style={{
+                            color: "white",
+                            fontFamily: "Josefin Sans, sans-serif",
+                          }}
+                        >
+                          {mail}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <Typography variant="h6" color="secondary">
+                          Phone Number:{" "}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography
+                          style={{
+                            color: "white",
+                            fontFamily: "Josefin Sans, sans-serif",
+                          }}
+                        >
+                          {phno}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
                 </Table>
                 <Grid item xs={4} style={{ marginTop: "10%" }}>
                   <Typography
