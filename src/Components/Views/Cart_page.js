@@ -26,11 +26,20 @@ import "../../resources/CSS/cartpage.css";
 import { useStoreState, useStoreActions, action } from "easy-peasy";
 
 function Cart_page() {
-  const { cart, totalCost, finalCost } = useStoreState((state) => ({
+  const { cart, totalCost, finalCost, token } = useStoreState((state) => ({
     cart: state.cart,
     totalCost: state.totalCost,
     finalCost: state.finalCost,
+    token: state.token,
   }));
+
+  const placeOrder = useStoreActions((action) => action.placeOrder);
+
+  const handleClick = () => {
+    console.log("handling click");
+    placeOrder({ token, address, payment_method });
+    setconfetti(true);
+  };
 
   const useStyles = makeStyles((theme) => ({
     textfield: {
@@ -66,10 +75,6 @@ function Cart_page() {
 
   const [confetti, setconfetti] = useState(false);
 
-  const handleClick = () => {
-    setconfetti(true);
-  };
-
   //const fetchCart = useStoreActions((action) => action.fetchCart);
   //console.log(cart);
   // for (const item in precart) {
@@ -84,11 +89,15 @@ function Cart_page() {
   //finalCost: state.finalCost,
   //}));
 
-  const [value, setValue] = React.useState("");
+  const [payment_method, setPayment] = useState("");
+  const [address, setAddress] = useState("");
 
   const handleChange = (event) => {
-    setValue(event.target.value);
-    console.log(value);
+    setPayment(event.target.value);
+  };
+
+  const takeAddress = (e) => {
+    setAddress(e.target.value);
   };
 
   return (
@@ -181,6 +190,7 @@ function Cart_page() {
                             label="Address"
                             color="secondary"
                             fullWidth
+                            onInput={takeAddress}
                           />
                         </Grid>
                       </Grid>
@@ -206,7 +216,7 @@ function Cart_page() {
                       <RadioGroup
                         row
                         align="right"
-                        value={value}
+                        value={payment_method}
                         onChange={handleChange}
                       >
                         <FormControlLabel
@@ -236,7 +246,7 @@ function Cart_page() {
                         variant="contained"
                         color="secondary"
                         style={{ fontFamily: "Josefin Sans, sans-serif" }}
-                        onClick={handleClick}
+                        onClick={() => handleClick()}
                       >
                         Place Order
                       </Button>

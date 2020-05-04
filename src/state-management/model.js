@@ -15,6 +15,7 @@ export default {
   cart: [],
   totalCost: 0,
   finalCost: 0,
+  orders: 0,
 
   //* actions
   // ! LOGIN
@@ -51,6 +52,7 @@ export default {
 
   // ! ADD TO CART
   addtoCart: action((state, item) => {
+    console.log(item);
     Axios.post(
       "http://localhost:8000/addtocart",
       {
@@ -113,9 +115,30 @@ export default {
     // console.log(state.loggedName, state.token);
   }),
 
+  // //! GetOrders
+  // getOrders: action((state) => {
+  //   console.log("Fetching your orders");
+  //   var orders;
+  //   return Axios.get("http://127.0.0.1:8000/orderhistory", {
+  //     headers: {
+  //       Authorization: `Token ${state.token}`,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       console.log("hello 1");
+  //       return res.data;
+  //     })
+  //     .then((res) => {
+  //       console.log("hello 2");
+  //       orders = res.orders;
+  //     });
+  //   return orders;
+  // }),
+
   //* Thunks
   //! Fetch Cart
   fetchCart: thunk(async (actions, payload) => {
+    console.log("fetched");
     if (payload) {
       console.log("token=", payload);
       const cart = await Axios.get("http://127.0.0.1:8000/cart", {
@@ -123,7 +146,6 @@ export default {
           Authorization: `Token ${payload}`,
         },
       }).then((res) => res.data);
-      // .then((res) => res.data);
       actions.fillCart(cart);
     }
     // console.log(getStoreState().cart);
@@ -150,5 +172,25 @@ export default {
       }
     ).then((res) => console.log("update cart result =", res.data));
     actions.fetchCart(payload.token);
+  }),
+
+  //! Place Order
+  placeOrder: thunk((action, payload) => {
+    action.fetchCart(payload.token);
+    Axios.post(
+      "http://127.0.0.1:8000/placeorder",
+      {
+        address: payload.address,
+        payment_method: payload.payment_method,
+      },
+      {
+        headers: {
+          Authorization: `Token ${payload.token}`,
+        },
+      }
+    )
+      .then((res) => res.data)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
   }),
 };

@@ -15,6 +15,7 @@ import {
   TableHead,
   TableBody,
 } from "@material-ui/core";
+import OrderList from "../OrderList";
 import { withStyles } from "@material-ui/core/styles";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import "../../resources/CSS/account.css";
@@ -28,17 +29,12 @@ function Account_page(props) {
     isLogged: state.isLogged,
   }));
 
-  const logout = useStoreActions((action) => action.logout);
+  const { logout, getOrders } = useStoreActions((action) => ({
+    logout: action.logout,
+    getOrders: action.getOrders,
+  }));
 
-  const [showItem, setShowItem] = useState(false);
-  const handleHover = (e) => {
-    setShowItem(true);
-    console.log(showItem);
-  };
-  const handleHoverOut = (e) => {
-    setShowItem(false);
-    console.log(showItem);
-  };
+
 
   return (
     <Grid container justify="center">
@@ -140,37 +136,8 @@ function Account_page(props) {
                 </Grid>
               </Grid>
               <Grid item xs={12} style={{ paddingTop: "3%" }}>
-                <Table align="center">
-                  <TableHead>
-                    <TableRow align="center">
-                      <TableCell
-                        style={{
-                          color: "white",
-                          fontFamily: "Josefin Sans, sans-serif",
-                        }}
-                      >
-                        Restaurant
-                      </TableCell>
-                      <TableCell
-                        style={{
-                          color: "white",
-                          fontFamily: "Josefin Sans, sans-serif",
-                        }}
-                      >
-                        Date
-                      </TableCell>
-                      <TableCell
-                        style={{
-                          color: "white",
-                          fontFamily: "Josefin Sans, sans-serif",
-                        }}
-                      >
-                        Delivery Time
-                      </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    <TableRow>
+                <OrderList />
+                {/* <TableRow>
                       <TableCell
                         onMouseOver={handleHover}
                         onMouseOut={handleHoverOut}
@@ -238,9 +205,7 @@ function Account_page(props) {
                       >
                         15 minutes
                       </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
+                    </TableRow> */}
               </Grid>
             </Fragment>
           ) : (
