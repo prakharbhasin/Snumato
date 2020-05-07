@@ -14,19 +14,64 @@ import {
   Card,
   TableHead,
   TableBody,
+  makeStyles,
+  TextField
 } from "@material-ui/core";
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import OrderList from "../OrderList";
 import { withStyles } from "@material-ui/core/styles";
 import { useStoreState, useStoreActions } from "easy-peasy";
+import Axios from "axios";
 import "../../resources/CSS/account.css";
 
 function Account_page(props) {
-  const { loggedName, name, phno, mail, isLogged } = useStoreState((state) => ({
+
+
+  const [emailState,setEmailState]=useState(false);
+  const [email, setEmail] = useState(null);
+
+  const handleEmail = () => {
+    setEmailState(true);
+    //console.log(emailState);
+  };
+
+  const handleEmailSubmit=(e) => {
+    e.preventDefault();
+    //console.log("email=", email, "pass=", pass);
+    Axios.post("http://127.0.0.1:8000/user/infoupdate", {
+      email: email,
+      first_name: loggedName,
+      last_name: loggedLName,
+      mobile_num: phno,
+    },
+   {headers: {
+      Authorization: `Token ${token}`,
+    }}
+    )
+    
+    .then(console.log(email))
+    .then(setEmailState(false))
+    .catch(e=>console.log(e))
+  }
+
+  const [phone, setPhone] = useState(null); 
+  const [phoneState,setPhoneState]=useState(false);
+
+  const handlePhone = () => {
+    setPhoneState(true);
+    //console.log(phoneState);
+  };
+
+  
+
+  const { loggedName,loggedLName, name, phno, mail, isLogged,token } = useStoreState((state) => ({
     loggedName: state.loggedName,
+    loggedLName:state.loggedLName,
     name: state.name,
     phno: state.phno,
     mail: state.mail,
     isLogged: state.isLogged,
+    token: state.token
   }));
 
   const { logout, getOrders } = useStoreActions((action) => ({
@@ -34,8 +79,39 @@ function Account_page(props) {
     getOrders: action.getOrders,
   }));
 
+  const useStyles = makeStyles((theme) => ({
+  textfield: {
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInputLabel-root": {
+      color: "rgb(255,0,85)",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&:hover fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+        color: "white",
+      },
+      "& .MuiInputBase-input": {
+        color: "white",
+      },
+    },
+  },
+}));
 
-
+const classes = useStyles();
   return (
     <Grid container justify="center">
       <Grid item xs={7}>
@@ -76,7 +152,7 @@ function Account_page(props) {
                 item
                 xs={6}
                 align="center"
-                style={{ marginLeft: "25%", paddingBottom: "5%" }}
+                style={{ marginLeft: "25%", paddingBottom: "3%" }}
               >
                 <Button variant="contained" color="secondary" onClick={logout}>
                   Logout
@@ -93,14 +169,21 @@ function Account_page(props) {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography
-                          style={{
-                            color: "white",
-                            fontFamily: "Josefin Sans, sans-serif",
-                          }}
-                        >
-                          {mail}
-                        </Typography>
+                      <TextField
+                        onInput={(e) => setEmail(e.target.value)}
+                         variant="outlined"
+                         margin="normal"
+                         label=""
+                         color="secondary"
+                         className={classes.textfield}
+                         defaultValue={mail}
+                         InputProps={{
+                          readOnly: !emailState,
+                        }}
+                       />
+                       {emailState?
+                       <Button color="secondary" onClick={handleEmailSubmit}style={{marginLeft:"15px",marginTop:"30px"}}>Update</Button>:
+                       <EditOutlinedIcon onClick={handleEmail} color="secondary" style={{marginLeft:"15px",marginTop:"30px", fontSize:"22px"}} />} 
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -110,19 +193,24 @@ function Account_page(props) {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography
-                          style={{
-                            color: "white",
-                            fontFamily: "Josefin Sans, sans-serif",
-                          }}
-                        >
-                          {phno}
-                        </Typography>
+                      <TextField
+                         variant="outlined"
+                         margin="normal"
+                         label=""
+                         color="secondary"
+                         className={classes.textfield}
+                         defaultValue={phno}
+                         InputProps={{
+                          readOnly: !phoneState,
+                        }}
+                       />
+                       <EditOutlinedIcon onClick={handlePhone}color="secondary" style={{marginLeft:"17px",marginTop:"30px", fontSize:"22px"}}/>
                       </TableCell>
                     </TableRow>
+                    
                   </TableBody>
                 </Table>
-                <Grid item xs={4} style={{ marginTop: "10%" }}>
+                <Grid item xs={4} style={{ marginTop: "5%" }}>
                   <Typography
                     color="secondary"
                     variant="h4"

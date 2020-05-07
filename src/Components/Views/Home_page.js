@@ -31,6 +31,7 @@ const Home_page = () => {
           LOGIN/SIGN UP
         </Button>
         </Grid> */}
+      
       <Grid
         container
         justify="space-evenly"
@@ -71,7 +72,10 @@ const Home_page = () => {
             BROWSE
           </Button>
         )}
+        
       </Grid>
+
+      {/*<h1> SNUMATO</h1>*/}
     </div>
   );
 };
