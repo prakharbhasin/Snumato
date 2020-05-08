@@ -16,6 +16,7 @@ import Restaurant from "./Components/Views/Restaurant";
 import SignUp from "./Components/Views/signup";
 import Cart from "./Components/Views/Cart_page";
 import Account from "./Components/Views/Account_page";
+import About_Us from "./Components/Views/About_us"
 import ParticleContainer from "./Layout/ParticleContainer";
 import Cookies from "js-cookie";
 import Axios from "axios";
@@ -52,6 +53,7 @@ function App() {
               <Route path="/snumato-dbms/signup" exact component={SignUp} />
               <Route path="/snumato-dbms/cart" exact component={Cart} />
               <Route path="/snumato-dbms/account" exact component={Account} />
+              <Route path="/snumato-dbms/About_us" exact component={About_Us} /> 
             </Switch>
           </Navbar>
         </Router>

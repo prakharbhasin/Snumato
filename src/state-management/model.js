@@ -7,9 +7,11 @@ import Cookies from "js-cookie";
 export default {
   //* states
   loggedName: null,
+  loggedLName:null,
   name: null,
   phno: null,
   mail: null,
+  loc:null,
   token: null,
   isLogged: false,
   cart: [],
@@ -26,6 +28,7 @@ export default {
     console.log("log=", state.isLogged);
     console.log(token);
     state.loggedName = user_data.first_name;
+    state.loggedLName=user_data.last_name;
     state.name = user_data.first_name + " " + user_data.last_name;
     state.phno = user_data.mobile_num;
     state.mail = user_data.email;
@@ -181,6 +184,7 @@ export default {
       "http://127.0.0.1:8000/placeorder",
       {
         address: payload.address,
+        
         payment_method: payload.payment_method,
       },
       {
