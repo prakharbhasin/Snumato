@@ -3,32 +3,22 @@ import {
   Typography,
   Paper,
   Grid,
-  TableContainer,
   Table,
   TableRow,
   TableCell,
   Button,
-  IconButton,
-  ButtonGroup,
   Avatar,
-  Card,
-  TableHead,
   TableBody,
   makeStyles,
-  TextField
+  TextField,
 } from "@material-ui/core";
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import OrderList from "../OrderList";
-import { withStyles } from "@material-ui/core/styles";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import Axios from "axios";
 import "../../resources/CSS/account.css";
 
 function Account_page(props) {
-
-  
-
-  
 
   const { loggedName,loggedLName, name, phno, mail, isLogged,token } = useStoreState((state) => ({
     loggedName: state.loggedName,
@@ -71,42 +61,41 @@ function Account_page(props) {
 
   const { logout, getOrders } = useStoreActions((action) => ({
     logout: action.logout,
-    getOrders: action.getOrders,
   }));
 
   const useStyles = makeStyles((theme) => ({
-  textfield: {
-    "& .MuiInputBase-input": {
-      color: "white",
-    },
-    "& label.Mui-focused": {
-      color: "white",
-    },
-    "& .MuiInputLabel-root": {
-      color: "rgb(255,0,85)",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "green",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "rgb(255,0,85)",
-      },
-      "&:hover fieldset": {
-        borderColor: "rgb(255,0,85)",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "white",
-        color: "white",
-      },
+    textfield: {
       "& .MuiInputBase-input": {
         color: "white",
       },
+      "& label.Mui-focused": {
+        color: "white",
+      },
+      "& .MuiInputLabel-root": {
+        color: "rgb(255,0,85)",
+      },
+      "& .MuiInput-underline:after": {
+        borderBottomColor: "green",
+      },
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "rgb(255,0,85)",
+        },
+        "&:hover fieldset": {
+          borderColor: "rgb(255,0,85)",
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "white",
+          color: "white",
+        },
+        "& .MuiInputBase-input": {
+          color: "white",
+        },
+      },
     },
-  },
-}));
+  }));
 
-const classes = useStyles();
+  const classes = useStyles();
   return (
     <Grid container justify="center">
       <Grid item xs={7}>
@@ -195,7 +184,6 @@ const classes = useStyles();
                        
                       </TableCell>
                     </TableRow>
-                    
                   </TableBody>
                 </Table>
                 <Grid item xs={4} style={{ marginTop: "5%" }}>

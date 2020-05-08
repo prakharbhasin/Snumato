@@ -1,29 +1,25 @@
-import React, { Component, Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import {
   Typography,
   Paper,
   Grid,
-  TableContainer,
   Table,
   TableRow,
   TableHead,
   TableCell,
   TableBody,
   Button,
-  IconButton,
-  ButtonGroup,
   Radio,
   FormControlLabel,
   RadioGroup,
   TextField,
 } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Serving from "../Serving";
 import CartItem from "../CartItem";
 import Confetti from "react-confetti";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
-import { useStoreState, useStoreActions, action } from "easy-peasy";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 function Cart_page() {
   const { cart, totalCost, finalCost, token } = useStoreState((state) => ({
@@ -53,7 +49,7 @@ function Cart_page() {
         color: "rgb(255,0,85)",
       },
       "& .MuiInput-underline:after": {
-        borderBottomColor: "rgb(255,0,85)",
+        borderBottomColor: "green",
       },
       "& .MuiOutlinedInput-root": {
         "& fieldset": {
@@ -72,7 +68,7 @@ function Cart_page() {
       },
     },
   }));
-  const classes = useStyles();
+
   const [confetti, setconfetti] = useState(false);
 
   //const fetchCart = useStoreActions((action) => action.fetchCart);
@@ -140,7 +136,7 @@ function Cart_page() {
               >
                 CART
               </Typography>
-              {/*<Typography
+              <Typography
                 variant="h6"
                 align="left"
                 color="primary"
@@ -150,7 +146,7 @@ function Cart_page() {
                 }}
               >
                 We Dem Tourist Cafe
-              </Typography>*/}
+              </Typography>
               {/* <TableContainer component={Paper}> */}
               <Table aria-label="cart-table">
                 <TableHead>
@@ -180,18 +176,16 @@ function Cart_page() {
                     <TableCell>
                       <Grid container spacing={1}>
                         <Grid item>
-                          <LocationOnIcon color="secondary" style={{marginTop:"21px"}}/>
+                          <LocationOnIcon color="secondary" />
                         </Grid>
                         <Grid item>
                           <TextField
                             // autoFocus
-                            variant="standard"
+                            variant="outlined"
                             id="input-with-icon-grid"
                             label="Address"
                             color="secondary"
                             fullWidth
-                            className={classes.textfield}
-                            style={{fontFamily: "Josefin Sans, sans-serif", marginLeft:"7px"}}
                             onInput={takeAddress}
                           />
                         </Grid>

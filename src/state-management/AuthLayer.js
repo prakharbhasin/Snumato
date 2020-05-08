@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreActions } from "easy-peasy";
 
 const readCookies = (Auth) => {
   const user = Cookies.get("user");
@@ -16,7 +16,7 @@ const AuthLayer = () => {
 
   useEffect(() => {
     readCookies(Auth);
-  }, []);
+  }, [Auth]);
 
   return null;
 };

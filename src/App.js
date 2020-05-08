@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {
-  StoreProvider,
-  createStore,
-  useStoreActions,
-  useStoreState,
-  action,
-} from "easy-peasy";
+import { StoreProvider, createStore } from "easy-peasy";
 import model from "./state-management/model";
 import HomePage from "./Components/Views/Home_page";
 import LoginPage from "./Components/Views/Login_page";
@@ -16,10 +10,7 @@ import Restaurant from "./Components/Views/Restaurant";
 import SignUp from "./Components/Views/signup";
 import Cart from "./Components/Views/Cart_page";
 import Account from "./Components/Views/Account_page";
-import About_Us from "./Components/Views/About_us"
-import ParticleContainer from "./Layout/ParticleContainer";
-import Cookies from "js-cookie";
-import Axios from "axios";
+import About_Us from "./Components/Views/About_us";
 import AuthLayer from "./state-management/AuthLayer";
 
 //easy-peasy state store
@@ -53,7 +44,7 @@ function App() {
               <Route path="/snumato-dbms/signup" exact component={SignUp} />
               <Route path="/snumato-dbms/cart" exact component={Cart} />
               <Route path="/snumato-dbms/account" exact component={Account} />
-              <Route path="/snumato-dbms/About_us" exact component={About_Us} /> 
+              <Route path="/snumato-dbms/About_us" exact component={About_Us} />
             </Switch>
           </Navbar>
         </Router>

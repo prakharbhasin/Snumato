@@ -1,8 +1,10 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import "../../resources/CSS/homepage.css";
 import { Button, Grid } from "@material-ui/core";
 import { useStoreState } from "easy-peasy";
+// import logo from "./snumato_logo.png";
+import logo from "../../resources/snumato_logo_alt.png";
 
 // const BTstyle = {
 //   opacity: "0.8",
@@ -31,48 +33,26 @@ const Home_page = () => {
           LOGIN/SIGN UP
         </Button>
         </Grid> */}
-      
+
       <Grid
         container
         justify="space-evenly"
         // direction="column"
-        alignItems="stretch"
+        alignItems="center"
+        direction="column"
+        style={{ marginTop: "5%" }}
       >
-        {isLogged ? (
-          <Fragment>
-            <Button
-              className="BT"
-              to="/snumato-dbms/Restaurant_page"
-              color="secondary"
-              variant="contained"
-              component={Link}
-              justify="center"
-            >
-              BROWSE
-            </Button>
-            {/* <Button
-              to="/snumato-dbms/account"
-              color="secondary"
-              variant="contained"
-              component={Link}
-              className="BT"
-            >
-              ACCOUNT
-            </Button> */}
-          </Fragment>
-        ) : (
-          <Button
-            className="BT"
-            to="/snumato-dbms/Restaurant_page"
-            color="secondary"
-            variant="contained"
-            component={Link}
-            justify="center"
-          >
-            BROWSE
-          </Button>
-        )}
-        
+        <img src={logo} />
+        <Button
+          className="BT"
+          to="/snumato-dbms/Restaurant_page"
+          color="secondary"
+          variant="contained"
+          component={Link}
+          justify="center"
+        >
+          BROWSE
+        </Button>
       </Grid>
 
       {/*<h1> SNUMATO</h1>*/}

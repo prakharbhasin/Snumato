@@ -10,7 +10,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Snackbar from "@material-ui/core/Snackbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Chip from "@material-ui/core/Chip";
 import Axios from "axios";
 import { useStoreActions, useStoreState } from "easy-peasy";
@@ -150,7 +150,7 @@ export default function SignInSide() {
       .then((res) => (res = res.data))
       .then((res) => {
         console.log(res.token);
-        if (res.status == "success") login(res);
+        if (res.status === "success") login(res);
         else {
           setError(true);
         }

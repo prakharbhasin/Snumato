@@ -26,12 +26,16 @@ const useStyles = makeStyles({
 export default function Card_restaurant(props) {
   const classes = useStyles();
 
-  const Image = "https://source.unsplash.com/user/foodess";
+  // const Image = "https://source.unsplash.com/user/foodess";
+  const Image = props.image;
   // const custom = customStyles();
-  console.log(props.rest);
+  // console.log(props.rest.restaurant_id);
   return (
     <Link
-      to={{ pathname: "/snumato-dbms/restaurant", state: props.rest }}
+      to={{
+        pathname: "/snumato-dbms/restaurant",
+        state: props.rest,
+      }}
       style={{ textDecoration: "none" }}
     >
       <Grid

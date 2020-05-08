@@ -6,14 +6,13 @@ import Serving from "./Serving";
 const CartItem = (props) => {
   const { item } = props;
 
-  const { deleteItem, fetchCart } = useStoreActions((action) => ({
+  const { deleteItem } = useStoreActions((action) => ({
     deleteItem: action.deleteItem,
-    fetchCart: action.fetchCart,
   }));
 
-  const [itemExist, setItemExist] = useState(true)
+  const [itemExist, setItemExist] = useState(true);
 
-  return (itemExist ?
+  return itemExist ? (
     <Fragment key={item.id}>
       <TableRow>
         <TableCell>{item.item_name}</TableCell>
@@ -27,15 +26,15 @@ const CartItem = (props) => {
             color="secondary"
             onClick={() => {
               deleteItem(item);
-              setItemExist(false)
+              setItemExist(false);
             }}
           >
             X
           </Button>
         </TableCell>
       </TableRow>
-    </Fragment> : null
-  );
+    </Fragment>
+  ) : null;
 };
 
 export default CartItem;

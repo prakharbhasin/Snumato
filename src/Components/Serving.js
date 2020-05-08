@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { ButtonGroup, Button } from "@material-ui/core";
-import Axios from "axios";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
 const Serving = (props) => {

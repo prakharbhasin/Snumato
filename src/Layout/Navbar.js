@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme, StylesProvider } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -23,7 +23,7 @@ import DeckIcon from '@material-ui/icons/Deck';
 import InputIcon from '@material-ui/icons/Input';
 import InfoIcon from '@material-ui/icons/Info';
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
 import "../resources/CSS/navbar.css";
@@ -112,11 +112,10 @@ export default function Navbar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const { loggedName, isLogged, token, cart } = useStoreState((state) => ({
+  const { loggedName, isLogged, token } = useStoreState((state) => ({
     loggedName: state.loggedName,
     isLogged: state.isLogged,
     token: state.token,
-    cart: state.cart,
   }));
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,7 +126,6 @@ export default function Navbar(props) {
   };
 
   const fetchCart = useStoreActions((action) => action.fetchCart);
-  const logout = useStoreActions((action) => action.logout);
   // useEffect(() => fetchCart, [token, cart]);
 
   return (
@@ -237,19 +235,19 @@ export default function Navbar(props) {
           </div>
           <Divider />
           <List>
-            <ListItem button  classname="listItem">
+            <ListItem button  className="listItem">
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <MonetizationOnIcon/>
               </ListItemIcon>
               <ListItemText primary="Today's Deals" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem">
+            <ListItem button  className="listItem">
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <NearMeIcon/>
               </ListItemIcon>
               <ListItemText primary="Near Me" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem" to="/snumato-dbms/Restaurant_page" component={Link}>
+            <ListItem button  className="listItem" to="/snumato-dbms/Restaurant_page" component={Link}>
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <DeckIcon/>
               </ListItemIcon>
@@ -272,19 +270,19 @@ export default function Navbar(props) {
           </List>
           <Divider />
           <List>
-          <ListItem button  classname="listItem" to="/snumato-dbms/Login_page" component={Link}>
+          <ListItem button  className="listItem" to="/snumato-dbms/login_page" component={Link}>
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <InputIcon/>
               </ListItemIcon>
               <ListItemText primary="Login" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem">
+            <ListItem button  className="listItem">
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <MailIcon/>
               </ListItemIcon>
               <ListItemText primary="Support" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem" to="/snumato-dbms/About_us" component={Link}>
+            <ListItem button  className="listItem" to="/snumato-dbms/About_us" component={Link}>
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <InfoIcon/>
               </ListItemIcon>
