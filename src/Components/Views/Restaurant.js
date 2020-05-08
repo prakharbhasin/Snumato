@@ -78,7 +78,6 @@ IconContainer.propTypes = {
 
 function Restaurant(props) {
   const classes = useStyles();
-
   const {
     restaurant_id,
     name,
@@ -88,10 +87,10 @@ function Restaurant(props) {
   } = props.location.state;
 
   return (
-    <Grid container>
+    <Grid container justify="center">
       <Card
         className={classes.resHead}
-        style={{ background: "black", opacity: "0.90" }}
+        style={{ background: "black" }}
       >
         <CardActionArea>
           <CardContent>
@@ -152,8 +151,6 @@ function Restaurant(props) {
             </Box>
           </CardContent>
         </CardActionArea>
-        <Menu id={restaurant_id} />
-
         <CardActions>
           <Grid container alignItems="flex-start">
             <Typography
@@ -179,6 +176,7 @@ function Restaurant(props) {
             </Button>
           </Grid>
         </CardActions>
+        <Menu id={restaurant_id} />
       </Card>
     </Grid>
   );
