@@ -2,14 +2,12 @@ import React, { useEffect, useState, Fragment } from "react";
 import {
   Typography,
   Button,
-  TableContainer,
   Table,
   TableRow,
   TableHead,
   TableCell,
   TableBody,
   IconButton,
-  Container,
   Grid,
 } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -33,11 +31,19 @@ function Menu(props) {
       .get(`http://127.0.0.1:8000/restaurants_menu?restaurant_id=${props.id}`)
       .then((res) => res.data)
       .then((result) => setMenu(result.restaurants));
-  }, []);
+  }, [props.id]);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setAdded(false);
+  };
 
   return (
     <Fragment>
-      <Grid container justify="center" style={{marginTop: "3%"}}>
+      <Grid container justify="center" style={{ marginTop: "3%" }}>
         <Grid item xs={6}>
           <Typography
             variant="h5"
@@ -82,10 +88,10 @@ function Menu(props) {
                           addItem({ item, token });
                           add([...isAdded, item]);
                           console.log(message);
-                          if (message == "the item is already in cart") {
+                          if (message === "the item is already in cart") {
                             setAdded(true);
                           } else if (
-                            message ==
+                            message ===
                             "Item has been successfully added to the cart."
                           ) {
                             setAdded(true);
@@ -100,8 +106,8 @@ function Menu(props) {
                           horizontal: "right",
                         }}
                         open={added}
-                        autoHideDuration={100}
-                        // onClose={handleClose}
+                        autoHideDuration={6000}
+                        onClose={handleClose}
                         message={message}
                         action={
                           <React.Fragment>

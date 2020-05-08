@@ -3,31 +3,23 @@ import {
   Typography,
   Paper,
   Grid,
-  TableContainer,
   Table,
   TableRow,
   TableCell,
   Button,
-  IconButton,
-  ButtonGroup,
   Avatar,
-  Card,
-  TableHead,
   TableBody,
   makeStyles,
-  TextField
+  TextField,
 } from "@material-ui/core";
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import OrderList from "../OrderList";
-import { withStyles } from "@material-ui/core/styles";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import Axios from "axios";
 import "../../resources/CSS/account.css";
 
 function Account_page(props) {
-
-
-  const [emailState,setEmailState]=useState(false);
+  const [emailState, setEmailState] = useState(false);
   const [email, setEmail] = useState(null);
 
   const handleEmail = () => {
@@ -35,83 +27,91 @@ function Account_page(props) {
     //console.log(emailState);
   };
 
-  const handleEmailSubmit=(e) => {
+  const handleEmailSubmit = (e) => {
     e.preventDefault();
     //console.log("email=", email, "pass=", pass);
-    Axios.post("http://127.0.0.1:8000/user/infoupdate", {
-      email: email,
-      first_name: loggedName,
-      last_name: loggedLName,
-      mobile_num: phno,
-    },
-   {headers: {
-      Authorization: `Token ${token}`,
-    }}
+    Axios.post(
+      "http://127.0.0.1:8000/user/infoupdate",
+      {
+        email: email,
+        first_name: loggedName,
+        last_name: loggedLName,
+        mobile_num: phno,
+      },
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
     )
-    
-    .then(console.log(email))
-    .then(setEmailState(false))
-    .catch(e=>console.log(e))
-  }
 
-  const [phone, setPhone] = useState(null); 
-  const [phoneState,setPhoneState]=useState(false);
+      .then(console.log(email))
+      .then(setEmailState(false))
+      .catch((e) => console.log(e));
+  };
+
+  const [phoneState, setPhoneState] = useState(false);
 
   const handlePhone = () => {
     setPhoneState(true);
     //console.log(phoneState);
   };
 
-  
-
-  const { loggedName,loggedLName, name, phno, mail, isLogged,token } = useStoreState((state) => ({
+  const {
+    loggedName,
+    loggedLName,
+    name,
+    phno,
+    mail,
+    isLogged,
+    token,
+  } = useStoreState((state) => ({
     loggedName: state.loggedName,
-    loggedLName:state.loggedLName,
+    loggedLName: state.loggedLName,
     name: state.name,
     phno: state.phno,
     mail: state.mail,
     isLogged: state.isLogged,
-    token: state.token
+    token: state.token,
   }));
 
-  const { logout, getOrders } = useStoreActions((action) => ({
+  const { logout } = useStoreActions((action) => ({
     logout: action.logout,
-    getOrders: action.getOrders,
   }));
 
   const useStyles = makeStyles((theme) => ({
-  textfield: {
-    "& .MuiInputBase-input": {
-      color: "white",
-    },
-    "& label.Mui-focused": {
-      color: "white",
-    },
-    "& .MuiInputLabel-root": {
-      color: "rgb(255,0,85)",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "green",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "rgb(255,0,85)",
-      },
-      "&:hover fieldset": {
-        borderColor: "rgb(255,0,85)",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "white",
-        color: "white",
-      },
+    textfield: {
       "& .MuiInputBase-input": {
         color: "white",
       },
+      "& label.Mui-focused": {
+        color: "white",
+      },
+      "& .MuiInputLabel-root": {
+        color: "rgb(255,0,85)",
+      },
+      "& .MuiInput-underline:after": {
+        borderBottomColor: "green",
+      },
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "rgb(255,0,85)",
+        },
+        "&:hover fieldset": {
+          borderColor: "rgb(255,0,85)",
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "white",
+          color: "white",
+        },
+        "& .MuiInputBase-input": {
+          color: "white",
+        },
+      },
     },
-  },
-}));
+  }));
 
-const classes = useStyles();
+  const classes = useStyles();
   return (
     <Grid container justify="center">
       <Grid item xs={7}>
@@ -169,21 +169,37 @@ const classes = useStyles();
                         </Typography>
                       </TableCell>
                       <TableCell>
-                      <TextField
-                        onInput={(e) => setEmail(e.target.value)}
-                         variant="outlined"
-                         margin="normal"
-                         label=""
-                         color="secondary"
-                         className={classes.textfield}
-                         defaultValue={mail}
-                         InputProps={{
-                          readOnly: !emailState,
-                        }}
-                       />
-                       {emailState?
-                       <Button color="secondary" onClick={handleEmailSubmit}style={{marginLeft:"15px",marginTop:"30px"}}>Update</Button>:
-                       <EditOutlinedIcon onClick={handleEmail} color="secondary" style={{marginLeft:"15px",marginTop:"30px", fontSize:"22px"}} />} 
+                        <TextField
+                          onInput={(e) => setEmail(e.target.value)}
+                          variant="outlined"
+                          margin="normal"
+                          label=""
+                          color="secondary"
+                          className={classes.textfield}
+                          defaultValue={mail}
+                          InputProps={{
+                            readOnly: !emailState,
+                          }}
+                        />
+                        {emailState ? (
+                          <Button
+                            color="secondary"
+                            onClick={handleEmailSubmit}
+                            style={{ marginLeft: "15px", marginTop: "30px" }}
+                          >
+                            Update
+                          </Button>
+                        ) : (
+                          <EditOutlinedIcon
+                            onClick={handleEmail}
+                            color="secondary"
+                            style={{
+                              marginLeft: "15px",
+                              marginTop: "30px",
+                              fontSize: "22px",
+                            }}
+                          />
+                        )}
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -193,21 +209,28 @@ const classes = useStyles();
                         </Typography>
                       </TableCell>
                       <TableCell>
-                      <TextField
-                         variant="outlined"
-                         margin="normal"
-                         label=""
-                         color="secondary"
-                         className={classes.textfield}
-                         defaultValue={phno}
-                         InputProps={{
-                          readOnly: !phoneState,
-                        }}
-                       />
-                       <EditOutlinedIcon onClick={handlePhone}color="secondary" style={{marginLeft:"17px",marginTop:"30px", fontSize:"22px"}}/>
+                        <TextField
+                          variant="outlined"
+                          margin="normal"
+                          label=""
+                          color="secondary"
+                          className={classes.textfield}
+                          defaultValue={phno}
+                          InputProps={{
+                            readOnly: !phoneState,
+                          }}
+                        />
+                        <EditOutlinedIcon
+                          onClick={handlePhone}
+                          color="secondary"
+                          style={{
+                            marginLeft: "17px",
+                            marginTop: "30px",
+                            fontSize: "22px",
+                          }}
+                        />
                       </TableCell>
                     </TableRow>
-                    
                   </TableBody>
                 </Table>
                 <Grid item xs={4} style={{ marginTop: "5%" }}>

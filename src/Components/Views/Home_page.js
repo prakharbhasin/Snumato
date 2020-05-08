@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import "../../resources/CSS/homepage.css";
 import { Button, Grid } from "@material-ui/core";
@@ -31,7 +31,7 @@ const Home_page = () => {
           LOGIN/SIGN UP
         </Button>
         </Grid> */}
-      
+
       <Grid
         container
         justify="space-evenly"
@@ -72,7 +72,6 @@ const Home_page = () => {
             BROWSE
           </Button>
         )}
-        
       </Grid>
 
       {/*<h1> SNUMATO</h1>*/}

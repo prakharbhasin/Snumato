@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme, StylesProvider } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -18,7 +18,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
 import { Button, Grid } from "@material-ui/core";
 import "../resources/CSS/navbar.css";
@@ -107,11 +107,10 @@ export default function Navbar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const { loggedName, isLogged, token, cart } = useStoreState((state) => ({
+  const { loggedName, isLogged, token } = useStoreState((state) => ({
     loggedName: state.loggedName,
     isLogged: state.isLogged,
     token: state.token,
-    cart: state.cart,
   }));
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -122,7 +121,6 @@ export default function Navbar(props) {
   };
 
   const fetchCart = useStoreActions((action) => action.fetchCart);
-  const logout = useStoreActions((action) => action.logout);
   // useEffect(() => fetchCart, [token, cart]);
 
   return (

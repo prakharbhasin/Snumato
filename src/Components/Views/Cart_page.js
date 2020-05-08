@@ -1,29 +1,25 @@
-import React, { Component, Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import {
   Typography,
   Paper,
   Grid,
-  TableContainer,
   Table,
   TableRow,
   TableHead,
   TableCell,
   TableBody,
   Button,
-  IconButton,
-  ButtonGroup,
   Radio,
   FormControlLabel,
   RadioGroup,
   TextField,
 } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Serving from "../Serving";
 import CartItem from "../CartItem";
 import Confetti from "react-confetti";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
-import { useStoreState, useStoreActions, action } from "easy-peasy";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 function Cart_page() {
   const { cart, totalCost, finalCost, token } = useStoreState((state) => ({
@@ -41,37 +37,37 @@ function Cart_page() {
     setconfetti(true);
   };
 
-  const useStyles = makeStyles((theme) => ({
-    textfield: {
-      "& .MuiInputBase-input": {
-        color: "white",
-      },
-      "& label.Mui-focused": {
-        color: "white",
-      },
-      "& .MuiInputLabel-root": {
-        color: "rgb(255,0,85)",
-      },
-      "& .MuiInput-underline:after": {
-        borderBottomColor: "green",
-      },
-      "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-          borderColor: "rgb(255,0,85)",
-        },
-        "&:hover fieldset": {
-          borderColor: "rgb(255,0,85)",
-        },
-        "&.Mui-focused fieldset": {
-          borderColor: "white",
-          color: "white",
-        },
-        "& .MuiInputBase-input": {
-          color: "white",
-        },
-      },
-    },
-  }));
+  // const useStyles = makeStyles((theme) => ({
+  //   textfield: {
+  //     "& .MuiInputBase-input": {
+  //       color: "white",
+  //     },
+  //     "& label.Mui-focused": {
+  //       color: "white",
+  //     },
+  //     "& .MuiInputLabel-root": {
+  //       color: "rgb(255,0,85)",
+  //     },
+  //     "& .MuiInput-underline:after": {
+  //       borderBottomColor: "green",
+  //     },
+  //     "& .MuiOutlinedInput-root": {
+  //       "& fieldset": {
+  //         borderColor: "rgb(255,0,85)",
+  //       },
+  //       "&:hover fieldset": {
+  //         borderColor: "rgb(255,0,85)",
+  //       },
+  //       "&.Mui-focused fieldset": {
+  //         borderColor: "white",
+  //         color: "white",
+  //       },
+  //       "& .MuiInputBase-input": {
+  //         color: "white",
+  //       },
+  //     },
+  //   },
+  // }));
 
   const [confetti, setconfetti] = useState(false);
 

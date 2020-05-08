@@ -3,7 +3,6 @@ import {
   Grid,
   Card,
   makeStyles,
-  CardActionArea,
   CardContent,
   CardMedia,
   Typography,
@@ -19,8 +18,6 @@ import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
-//import StarIcon from "@material-ui/icons/Star";
-// import Rating from "@material-ui/lab/Rating";
 import Menu from "../Menu";
 
 const useStyles = makeStyles({
@@ -37,10 +34,10 @@ const useStyles = makeStyles({
 });
 const StyledRating = withStyles({
   iconFilled: {
-    color: "#ff6d75",
+    color: "#FFF",
   },
   iconHover: {
-    color: "#ff3d47",
+    color: "#F05",
   },
 })(Rating);
 
@@ -88,11 +85,8 @@ function Restaurant(props) {
 
   return (
     <Grid container justify="center">
-      <Card
-        className={classes.resHead}
-        style={{ background: "black" }}
-      >
-        <CardActionArea>
+      <Card className={classes.resHead} style={{ background: "black" }}>
+        {/* <CardActionArea> */}
           <CardContent>
             <CardMedia
               className={classes.media}
@@ -121,6 +115,7 @@ function Restaurant(props) {
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
+                  <Typography style={{ color: "white" }}>Restaurant Rating</Typography>
                   <Rating
                     name="customized-icons"
                     defaultValue={4}
@@ -150,7 +145,7 @@ function Restaurant(props) {
               </Grid>
             </Box>
           </CardContent>
-        </CardActionArea>
+        {/* </CardActionArea> */}
         <CardActions>
           <Grid container alignItems="flex-start">
             <Typography
@@ -158,6 +153,13 @@ function Restaurant(props) {
             >
               Rate This Restaurant
             </Typography>
+            <StyledRating
+                    name="customized-icons"
+                    defaultValue={4}
+                    // readOnly
+                    IconContainerComponent={IconContainer}
+                    style={{ color: "#F05" }}
+                  />
           </Grid>
           {/* {value !== null && (
             <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
