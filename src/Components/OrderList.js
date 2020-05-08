@@ -81,7 +81,7 @@ const OrderList = () => {
       <TableBody>
         {orders &&
           orders.map((order) => (
-            <TableRow>
+            <TableRow key={order.order_id}>
               <TableCell
                 onMouseOver={handleHover}
                 onMouseOut={handleHoverOut}
