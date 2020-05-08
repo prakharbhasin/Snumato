@@ -26,41 +26,7 @@ import "../../resources/CSS/account.css";
 
 function Account_page(props) {
 
-
-  const [emailState,setEmailState]=useState(false);
-  const [email, setEmail] = useState(null);
-
-  const handleEmail = () => {
-    setEmailState(true);
-    //console.log(emailState);
-  };
-
-  const handleEmailSubmit=(e) => {
-    e.preventDefault();
-    //console.log("email=", email, "pass=", pass);
-    Axios.post("http://127.0.0.1:8000/user/infoupdate", {
-      email: email,
-      first_name: loggedName,
-      last_name: loggedLName,
-      mobile_num: phno,
-    },
-   {headers: {
-      Authorization: `Token ${token}`,
-    }}
-    )
-    
-    .then(console.log(email))
-    .then(setEmailState(false))
-    .catch(e=>console.log(e))
-  }
-
-  const [phone, setPhone] = useState(null); 
-  const [phoneState,setPhoneState]=useState(false);
-
-  const handlePhone = () => {
-    setPhoneState(true);
-    //console.log(phoneState);
-  };
+  
 
   
 
@@ -73,6 +39,35 @@ function Account_page(props) {
     isLogged: state.isLogged,
     token: state.token
   }));
+
+  const [phone, setPhone] = useState(""); 
+  const [phoneState,setPhoneState]=useState(false);
+  const [inputPhone,setInputPhone]=useState(false);
+
+  const handlePhone = () => {
+    setPhoneState(true);
+    //console.log(phoneState);
+  };
+
+  const handlePhoneSubmit=(e) => {
+    e.preventDefault();
+    //console.log("email=", email, "pass=", pass);
+    Axios.post("http://127.0.0.1:8000/user/infoupdate", {
+      email: mail,
+      first_name: loggedName,
+      last_name: loggedLName,
+      mobile_num: phone,
+    },
+   {headers: {
+      Authorization: `Token ${token}`,
+    }}
+    )
+    
+    .then(console.log(phone))
+    .then(setPhoneState(false))
+    .then(setInputPhone(true))
+    .catch(e=>console.log(e))
+  }
 
   const { logout, getOrders } = useStoreActions((action) => ({
     logout: action.logout,
@@ -169,21 +164,7 @@ const classes = useStyles();
                         </Typography>
                       </TableCell>
                       <TableCell>
-                      <TextField
-                        onInput={(e) => setEmail(e.target.value)}
-                         variant="outlined"
-                         margin="normal"
-                         label=""
-                         color="secondary"
-                         className={classes.textfield}
-                         defaultValue={mail}
-                         InputProps={{
-                          readOnly: !emailState,
-                        }}
-                       />
-                       {emailState?
-                       <Button color="secondary" onClick={handleEmailSubmit}style={{marginLeft:"15px",marginTop:"30px"}}>Update</Button>:
-                       <EditOutlinedIcon onClick={handleEmail} color="secondary" style={{marginLeft:"15px",marginTop:"30px", fontSize:"22px"}} />} 
+                      <Typography style={{color:"white",fontFamily:"Josefin Sans, sans-serif"}}>{mail}</Typography> 
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -193,18 +174,25 @@ const classes = useStyles();
                         </Typography>
                       </TableCell>
                       <TableCell>
-                      <TextField
-                         variant="outlined"
-                         margin="normal"
-                         label=""
-                         color="secondary"
-                         className={classes.textfield}
-                         defaultValue={phno}
-                         InputProps={{
-                          readOnly: !phoneState,
-                        }}
-                       />
-                       <EditOutlinedIcon onClick={handlePhone}color="secondary" style={{marginLeft:"17px",marginTop:"30px", fontSize:"22px"}}/>
+                      
+                       {phoneState?
+                       <div>
+                        <TextField
+                       onInput={(e) => setPhone(e.target.value)}
+                       variant="outlined"
+                       margin="normal"
+                       label=""
+                       color="secondary"
+                       className={classes.textfield}
+                       defaultValue={phno}
+                     />
+                       <Button color="secondary" onClick={handlePhoneSubmit}style={{marginLeft:"15px",marginTop:"30px"}}>Update</Button>
+                       </div>:
+                       <div>
+                          <Typography style={{color:"white",fontFamily:"Josefin Sans, sans-serif",marginTop:"30px"}}>{inputPhone?phone:phno}</Typography>
+                          <EditOutlinedIcon onClick={handlePhone}color="secondary" style={{marginLeft:"47px", fontSize:"22px"}}/>
+                       </div>}
+                       
                       </TableCell>
                     </TableRow>
                     

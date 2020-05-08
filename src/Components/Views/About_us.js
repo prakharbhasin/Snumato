@@ -33,7 +33,7 @@ class About_us extends React.Component{
           style={{ background: "black", opacity: "0.95",maxWidth:"345px",minWidth:"345px",height:"380px",marginTop:"20px"}}
           align="center"
         >
-            <Avatar style={{width:"120px",height:"120px", marginTop:"20px",marginBottom:"20px",border:"3px solid #F05"}} />
+            <Avatar style={{width:"120px",height:"120px", marginTop:"20px",marginBottom:"20px",border:"3px solid #F05"}} src="../../resources/Bhavya.jpeg" />
             <Typography variant="h4" color="secondary" style={{fontFamily: "Josefin Sans, sans-serif"}}>Abhisht Singh</Typography>
             <p style={{color:"#999"}}>
             Mobile App Developer | Competitive Coder | ❤️ Open Source | CSE Undergrad - Shiv Nadar University
@@ -50,7 +50,7 @@ class About_us extends React.Component{
             <Avatar style={{width:"120px",height:"120px", marginTop:"20px",marginBottom:"20px",border:"3px solid #F05"}} />
             <Typography variant="h4" color="secondary" style={{fontFamily: "Josefin Sans, sans-serif"}}>Prakhar Bhasin</Typography>
             <p style={{color:"#999"}}>
-            whole<br/> lotta<br/> slatt
+            CSE, Shiv Nadar University<br/>Web Developer<br/>Hip-Hop Enthusiast
             </p>
             <Typography variant="h6" color="secondary">
                 pbhasin400@gmail.com
