@@ -235,19 +235,19 @@ export default function Navbar(props) {
           </div>
           <Divider />
           <List>
-            <ListItem button  classname="listItem">
+            <ListItem button  className="listItem">
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <MonetizationOnIcon/>
               </ListItemIcon>
               <ListItemText primary="Today's Deals" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem">
+            <ListItem button  className="listItem">
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <NearMeIcon/>
               </ListItemIcon>
               <ListItemText primary="Near Me" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem" to="/snumato-dbms/Restaurant_page" component={Link}>
+            <ListItem button  className="listItem" to="/snumato-dbms/Restaurant_page" component={Link}>
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <DeckIcon/>
               </ListItemIcon>
@@ -270,19 +270,19 @@ export default function Navbar(props) {
           </List>
           <Divider />
           <List>
-          <ListItem button  classname="listItem" to="/snumato-dbms/Login_page" component={Link}>
+          <ListItem button  className="listItem" to="/snumato-dbms/login_page" component={Link}>
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <InputIcon/>
               </ListItemIcon>
               <ListItemText primary="Login" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem">
+            <ListItem button  className="listItem">
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <MailIcon/>
               </ListItemIcon>
               <ListItemText primary="Support" style={{color:"white"}}/>
             </ListItem>
-            <ListItem button  classname="listItem" to="/snumato-dbms/About_us" component={Link}>
+            <ListItem button  className="listItem" to="/snumato-dbms/About_us" component={Link}>
             <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
                 <InfoIcon/>
               </ListItemIcon>
