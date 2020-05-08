@@ -17,7 +17,7 @@ import {
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import CartItem from "../CartItem";
 import Confetti from "react-confetti";
-// import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
@@ -37,37 +37,37 @@ function Cart_page() {
     setconfetti(true);
   };
 
-  // const useStyles = makeStyles((theme) => ({
-  //   textfield: {
-  //     "& .MuiInputBase-input": {
-  //       color: "white",
-  //     },
-  //     "& label.Mui-focused": {
-  //       color: "white",
-  //     },
-  //     "& .MuiInputLabel-root": {
-  //       color: "rgb(255,0,85)",
-  //     },
-  //     "& .MuiInput-underline:after": {
-  //       borderBottomColor: "green",
-  //     },
-  //     "& .MuiOutlinedInput-root": {
-  //       "& fieldset": {
-  //         borderColor: "rgb(255,0,85)",
-  //       },
-  //       "&:hover fieldset": {
-  //         borderColor: "rgb(255,0,85)",
-  //       },
-  //       "&.Mui-focused fieldset": {
-  //         borderColor: "white",
-  //         color: "white",
-  //       },
-  //       "& .MuiInputBase-input": {
-  //         color: "white",
-  //       },
-  //     },
-  //   },
-  // }));
+  const useStyles = makeStyles((theme) => ({
+    textfield: {
+      "& .MuiInputBase-input": {
+        color: "white",
+      },
+      "& label.Mui-focused": {
+        color: "white",
+      },
+      "& .MuiInputLabel-root": {
+        color: "rgb(255,0,85)",
+      },
+      "& .MuiInput-underline:after": {
+        borderBottomColor: "green",
+      },
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "rgb(255,0,85)",
+        },
+        "&:hover fieldset": {
+          borderColor: "rgb(255,0,85)",
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "white",
+          color: "white",
+        },
+        "& .MuiInputBase-input": {
+          color: "white",
+        },
+      },
+    },
+  }));
 
   const [confetti, setconfetti] = useState(false);
 

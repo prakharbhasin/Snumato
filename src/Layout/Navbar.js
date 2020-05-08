@@ -17,6 +17,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import NearMeIcon from '@material-ui/icons/NearMe';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import DeckIcon from '@material-ui/icons/Deck';
+import InputIcon from '@material-ui/icons/Input';
+import InfoIcon from '@material-ui/icons/Info';
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
 //import "../Components/homepage.css";
@@ -204,6 +209,7 @@ export default function Navbar(props) {
           </Toolbar>
         </AppBar>
         <Drawer
+          
           onMouseOver={handleDrawerOpen}
           onMouseOut={handleDrawerClose}
           variant="permanent"
@@ -229,24 +235,60 @@ export default function Navbar(props) {
           </div>
           <Divider />
           <List>
-            {["Today's deals", "Near Me", "Browse"].map((text, index) => (
-              <Link
+            <ListItem button  classname="listItem">
+            <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
+                <MonetizationOnIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Today's Deals" style={{color:"white"}}/>
+            </ListItem>
+            <ListItem button  classname="listItem">
+            <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
+                <NearMeIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Near Me" style={{color:"white"}}/>
+            </ListItem>
+            <ListItem button  classname="listItem" to="/snumato-dbms/Restaurant_page" component={Link}>
+            <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
+                <DeckIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Browse" style={{color:"white"}}/>
+            </ListItem>
+              {/*<Link
                 to="/snumato-dbms"
                 style={{ textDecoration: "none", color: "inherit" }}
                 key={index}
               >
                 <ListItem button key={text} className="listItem">
                   <ListItemIcon style={{ color: "white" }}>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                   {[<MonetizationOnIcon/>,<InfoIcon/>,<InputIcon/>]}
                   </ListItemIcon>
                   <ListItemText primary={text} style={{ color: "#F05" }} />
                 </ListItem>
+                
               </Link>
-            ))}
+              ))}*/}
           </List>
           <Divider />
           <List>
-            {["Login", "Support", "About us"].map((text, index) => (
+          <ListItem button  classname="listItem" to="/snumato-dbms/Login_page" component={Link}>
+            <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
+                <InputIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Login" style={{color:"white"}}/>
+            </ListItem>
+            <ListItem button  classname="listItem">
+            <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
+                <MailIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Support" style={{color:"white"}}/>
+            </ListItem>
+            <ListItem button  classname="listItem" to="/snumato-dbms/About_us" component={Link}>
+            <ListItemIcon style={{color:"white",marginLeft:"8px"}}>
+                <InfoIcon/>
+              </ListItemIcon>
+              <ListItemText primary="About Us" style={{color:"white"}}/>
+            </ListItem>
+            {/*{["Login", "Support", "About us"].map((text, index) => (
               <Link
                 to="/snumato-dbms/login_page"
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -259,7 +301,7 @@ export default function Navbar(props) {
                   <ListItemText primary={text} style={{ color: "white" }} />
                 </ListItem>
               </Link>
-            ))}
+            ))}*/}
           </List>
         </Drawer>
         <main className={classes.content}>

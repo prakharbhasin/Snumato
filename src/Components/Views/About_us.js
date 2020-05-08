@@ -1,6 +1,10 @@
 import React from "react";
-import { Typography, Grid, Avatar } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
+import {
+    Typography,
+    Grid,
+    Avatar
+  } from "@material-ui/core";
+  import Card from "@material-ui/core/Card";
 
 class About_us extends React.Component {
   render() {
