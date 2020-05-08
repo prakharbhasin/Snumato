@@ -53,7 +53,7 @@ function Cart_page() {
         color: "rgb(255,0,85)",
       },
       "& .MuiInput-underline:after": {
-        borderBottomColor: "green",
+        borderBottomColor: "rgb(255,0,85)",
       },
       "& .MuiOutlinedInput-root": {
         "& fieldset": {
@@ -72,7 +72,7 @@ function Cart_page() {
       },
     },
   }));
-
+  const classes = useStyles();
   const [confetti, setconfetti] = useState(false);
 
   //const fetchCart = useStoreActions((action) => action.fetchCart);
@@ -140,7 +140,7 @@ function Cart_page() {
               >
                 CART
               </Typography>
-              <Typography
+              {/*<Typography
                 variant="h6"
                 align="left"
                 color="primary"
@@ -150,7 +150,7 @@ function Cart_page() {
                 }}
               >
                 We Dem Tourist Cafe
-              </Typography>
+              </Typography>*/}
               {/* <TableContainer component={Paper}> */}
               <Table aria-label="cart-table">
                 <TableHead>
@@ -180,16 +180,18 @@ function Cart_page() {
                     <TableCell>
                       <Grid container spacing={1}>
                         <Grid item>
-                          <LocationOnIcon color="secondary" />
+                          <LocationOnIcon color="secondary" style={{marginTop:"21px"}}/>
                         </Grid>
                         <Grid item>
                           <TextField
                             // autoFocus
-                            variant="outlined"
+                            variant="standard"
                             id="input-with-icon-grid"
                             label="Address"
                             color="secondary"
                             fullWidth
+                            className={classes.textfield}
+                            style={{fontFamily: "Josefin Sans, sans-serif", marginLeft:"7px"}}
                             onInput={takeAddress}
                           />
                         </Grid>
