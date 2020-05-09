@@ -1,6 +1,10 @@
 import React from "react";
 import { Typography, Grid, Avatar } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
+import Abhisht from "../../resources/Abhisht.jpg";
+import Prakhar from "../../resources/Prakhar.jpg";
+import Kirtik from "../../resources/Kirtik.png";
+import Bhavya from "../../resources/Bhavya.jpg";
 
 class About_us extends React.Component {
   render() {
@@ -46,6 +50,7 @@ class About_us extends React.Component {
                 align="center"
               >
                 <Avatar
+                src={Abhisht}
                   style={{
                     width: "120px",
                     height: "120px",
@@ -84,6 +89,7 @@ class About_us extends React.Component {
                 align="center"
               >
                 <Avatar
+                src={Prakhar}
                   style={{
                     width: "120px",
                     height: "120px",
@@ -123,6 +129,7 @@ class About_us extends React.Component {
                 align="center"
               >
                 <Avatar
+                src={Kirtik}
                   style={{
                     width: "120px",
                     height: "120px",
@@ -162,6 +169,7 @@ class About_us extends React.Component {
                 align="center"
               >
                 <Avatar
+                src={Bhavya}
                   style={{
                     width: "120px",
                     height: "120px",
