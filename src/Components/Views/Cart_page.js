@@ -21,6 +21,38 @@ import { makeStyles } from "@material-ui/core/styles";
 import "../../resources/CSS/cartpage.css";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
+const useStyles = makeStyles((theme) => ({
+  textfield: {
+    "& .MuiInputBase-input": {
+      color: "white",
+    },
+    "& label.Mui-focused": {
+      color: "white",
+    },
+    "& .MuiInputLabel-root": {
+      color: "rgb(255,0,85)",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&:hover fieldset": {
+        borderColor: "rgb(255,0,85)",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+        color: "white",
+      },
+      "& .MuiInputBase-input": {
+        color: "white",
+      },
+    },
+  },
+}));
+
 function Cart_page() {
   const { cart, totalCost, finalCost, token } = useStoreState((state) => ({
     cart: state.cart,
@@ -37,37 +69,7 @@ function Cart_page() {
     setconfetti(true);
   };
 
-  const useStyles = makeStyles((theme) => ({
-    textfield: {
-      "& .MuiInputBase-input": {
-        color: "white",
-      },
-      "& label.Mui-focused": {
-        color: "white",
-      },
-      "& .MuiInputLabel-root": {
-        color: "rgb(255,0,85)",
-      },
-      "& .MuiInput-underline:after": {
-        borderBottomColor: "green",
-      },
-      "& .MuiOutlinedInput-root": {
-        "& fieldset": {
-          borderColor: "rgb(255,0,85)",
-        },
-        "&:hover fieldset": {
-          borderColor: "rgb(255,0,85)",
-        },
-        "&.Mui-focused fieldset": {
-          borderColor: "white",
-          color: "white",
-        },
-        "& .MuiInputBase-input": {
-          color: "white",
-        },
-      },
-    },
-  }));
+  const classes = useStyles();
 
   const [confetti, setconfetti] = useState(false);
 
@@ -94,6 +96,7 @@ function Cart_page() {
 
   const takeAddress = (e) => {
     setAddress(e.target.value);
+    
   };
 
   return (
@@ -180,13 +183,14 @@ function Cart_page() {
                         </Grid>
                         <Grid item>
                           <TextField
-                            // autoFocus
+                            autoFocus
                             variant="outlined"
                             id="input-with-icon-grid"
                             label="Address"
                             color="secondary"
                             fullWidth
                             onInput={takeAddress}
+                            className={classes.textfield}
                           />
                         </Grid>
                       </Grid>
