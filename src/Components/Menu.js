@@ -19,9 +19,10 @@ function Menu(props) {
   const [menu, setMenu] = useState(null);
   const [isAdded, add] = useState([]);
   const addItem = useStoreActions((action) => action.addtoCart);
-  const { message, token } = useStoreState((state) => ({
+  const { message, token, isLogged } = useStoreState((state) => ({
     message: state.item_message,
     token: state.token,
+    isLogged: state.isLogged,
   }));
 
   const [added, setAdded] = useState(false);
@@ -88,14 +89,15 @@ function Menu(props) {
                           addItem({ item, token });
                           add([...isAdded, item]);
                           console.log(message);
-                          if (message === "the item is already in cart") {
-                            setAdded(true);
-                          } else if (
-                            message ===
-                            "Item has been successfully added to the cart."
-                          ) {
-                            setAdded(true);
-                          }
+                          setAdded(true);
+                          // if (message === "the item is already in cart") {
+                          //   setAdded(true);
+                          // } else if (
+                          //   message ===
+                          //   "Item has been successfully added to the cart."
+                          // ) {
+                          //   setAdded(true);
+                          // }
                         }}
                       >
                         Add
@@ -108,7 +110,7 @@ function Menu(props) {
                         open={added}
                         autoHideDuration={6000}
                         onClose={handleClose}
-                        message={message}
+                        message={isLogged ? message : "You must login first"}
                         action={
                           <React.Fragment>
                             <IconButton

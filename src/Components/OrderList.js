@@ -50,7 +50,7 @@ const OrderList = () => {
               fontFamily: "Josefin Sans, sans-serif",
             }}
           >
-            Restaurant
+            Order ID
           </TableCell>
           <TableCell
             style={{
@@ -90,18 +90,14 @@ const OrderList = () => {
                   fontFamily: "Josefin Sans, sans-serif",
                 }}
               >
-                Naveen Tea Stall
+                {order.order_id}
                 {showItem ? (
                   <Fragment>
-                    <Typography style={{ color: "#555" }}>
-                      Order ID : {order.order_id}
-                    </Typography>
-                    <Typography style={{ color: "#555" }}>
-                      {order.payment_method}
-                    </Typography>
-                    <Typography style={{ color: "#555" }}>
-                      Item 3: Quantity
-                    </Typography>
+                    {JSON.parse(order.order_description).map((item) => (
+                      <Typography key={item.id} style={{ color: "#555" }}>
+                        {item.item_name}
+                      </Typography>
+                    ))}
                   </Fragment>
                 ) : (
                   <div></div>

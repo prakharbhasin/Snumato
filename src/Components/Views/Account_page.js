@@ -19,47 +19,58 @@ import Axios from "axios";
 import "../../resources/CSS/account.css";
 
 function Account_page(props) {
-
-  const { loggedName,loggedLName, name, phno, mail, isLogged,token } = useStoreState((state) => ({
+  const {
+    loggedName,
+    loggedLName,
+    name,
+    phno,
+    mail,
+    isLogged,
+    token,
+  } = useStoreState((state) => ({
     loggedName: state.loggedName,
-    loggedLName:state.loggedLName,
+    loggedLName: state.loggedLName,
     name: state.name,
     phno: state.phno,
     mail: state.mail,
     isLogged: state.isLogged,
-    token: state.token
+    token: state.token,
   }));
 
-  const [phone, setPhone] = useState(""); 
-  const [phoneState,setPhoneState]=useState(false);
-  const [inputPhone,setInputPhone]=useState(false);
+  const [phone, setPhone] = useState("");
+  const [phoneState, setPhoneState] = useState(false);
+  const [inputPhone, setInputPhone] = useState(false);
 
   const handlePhone = () => {
     setPhoneState(true);
     //console.log(phoneState);
   };
 
-  const handlePhoneSubmit=(e) => {
+  const handlePhoneSubmit = (e) => {
     e.preventDefault();
     //console.log("email=", email, "pass=", pass);
-    Axios.post("http://127.0.0.1:8000/user/infoupdate", {
-      email: mail,
-      first_name: loggedName,
-      last_name: loggedLName,
-      mobile_num: phone,
-    },
-   {headers: {
-      Authorization: `Token ${token}`,
-    }}
+    Axios.post(
+      "http://127.0.0.1:8000/user/infoupdate",
+      {
+        email: mail,
+        first_name: loggedName,
+        last_name: loggedLName,
+        mobile_num: phone,
+      },
+      {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      }
     )
-    
-    .then(console.log(phone))
-    .then(setPhoneState(false))
-    .then(setInputPhone(true))
-    .catch(e=>console.log(e))
-  }
 
-  const { logout, getOrders } = useStoreActions((action) => ({
+      .then(console.log(phone))
+      .then(setPhoneState(false))
+      .then(setInputPhone(true))
+      .catch((e) => console.log(e));
+  };
+
+  const { logout } = useStoreActions((action) => ({
     logout: action.logout,
   }));
 
@@ -83,6 +94,7 @@ function Account_page(props) {
         },
         "&:hover fieldset": {
           borderColor: "rgb(255,0,85)",
+          cursor: "pointer",
         },
         "&.Mui-focused fieldset": {
           borderColor: "white",
@@ -153,7 +165,14 @@ function Account_page(props) {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                      <Typography style={{color:"white",fontFamily:"Josefin Sans, sans-serif"}}>{mail}</Typography> 
+                        <Typography
+                          style={{
+                            color: "white",
+                            fontFamily: "Josefin Sans, sans-serif",
+                          }}
+                        >
+                          {mail}
+                        </Typography>
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -162,27 +181,52 @@ function Account_page(props) {
                           Phone Number:{" "}
                         </Typography>
                       </TableCell>
-                      <TableCell>
-                      
-                       {phoneState?
-                       <div>
-                        <TextField
-                       onInput={(e) => setPhone(e.target.value)}
-                       variant="outlined"
-                       margin="normal"
-                       label=""
-                       color="secondary"
-                       className={classes.textfield}
-                       defaultValue={phno}
-                     />
-                       <Button color="secondary" onClick={handlePhoneSubmit}style={{marginLeft:"15px",marginTop:"30px"}}>Update</Button>
-                       </div>:
-                       <div>
-                          <Typography style={{color:"white",fontFamily:"Josefin Sans, sans-serif",marginTop:"30px"}}>{inputPhone?phone:phno}</Typography>
-                          <EditOutlinedIcon onClick={handlePhone}color="secondary" style={{marginLeft:"47px", fontSize:"22px"}}/>
-                       </div>}
-                       
-                      </TableCell>
+                      {/* <TableCell> */}
+                        {phoneState ? (
+                          <Fragment>
+                            <TextField
+                              onInput={(e) => setPhone(e.target.value)}
+                              variant="outlined"
+                              margin="normal"
+                              label=""
+                              color="secondary"
+                              className={classes.textfield}
+                              defaultValue={phno}
+                            />
+                            <Button
+                              color="secondary"
+                              onClick={handlePhoneSubmit}
+                              style={{
+                                marginLeft: "15px",
+                                marginTop: "30px",
+                              }}
+                            >
+                              Update
+                            </Button>
+                          </Fragment>
+                        ) : (
+                          <Fragment>
+                            <TextField
+                              className={classes.textfield}
+                              defaultValue={inputPhone ? phone : phno}
+                              variant="outlined"
+                              disabled
+                              style={{
+                                color: "white",
+                                fontFamily: "Josefin Sans, sans-serif",
+                                // marginTop: "30px",
+                              }}
+                            />
+                            {/* {inputPhone ? phone : phno}
+                            </Typography> */}
+                            <EditOutlinedIcon
+                              onClick={handlePhone}
+                              color="secondary"
+                              style={{ marginLeft: "47px", fontSize: "22px", marginTop: "15px" }}
+                            />
+                          </Fragment>
+                        )}
+                      {/* </TableCell> */}
                     </TableRow>
                   </TableBody>
                 </Table>
