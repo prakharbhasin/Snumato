@@ -182,50 +182,54 @@ function Account_page(props) {
                         </Typography>
                       </TableCell>
                       {/* <TableCell> */}
-                        {phoneState ? (
-                          <Fragment>
-                            <TextField
-                              onInput={(e) => setPhone(e.target.value)}
-                              variant="outlined"
-                              margin="normal"
-                              label=""
-                              color="secondary"
-                              className={classes.textfield}
-                              defaultValue={phno}
-                            />
-                            <Button
-                              color="secondary"
-                              onClick={handlePhoneSubmit}
-                              style={{
-                                marginLeft: "15px",
-                                marginTop: "30px",
-                              }}
-                            >
-                              Update
-                            </Button>
-                          </Fragment>
-                        ) : (
-                          <Fragment>
-                            <TextField
-                              className={classes.textfield}
-                              defaultValue={inputPhone ? phone : phno}
-                              variant="outlined"
-                              disabled
-                              style={{
-                                color: "white",
-                                fontFamily: "Josefin Sans, sans-serif",
-                                // marginTop: "30px",
-                              }}
-                            />
-                            {/* {inputPhone ? phone : phno}
+                      {phoneState ? (
+                        <Fragment>
+                          <TextField
+                            onInput={(e) => setPhone(e.target.value)}
+                            variant="outlined"
+                            margin="normal"
+                            label=""
+                            color="secondary"
+                            className={classes.textfield}
+                            defaultValue={phno}
+                          />
+                          <Button
+                            color="secondary"
+                            onClick={handlePhoneSubmit}
+                            style={{
+                              marginLeft: "15px",
+                              marginTop: "30px",
+                            }}
+                          >
+                            Update
+                          </Button>
+                        </Fragment>
+                      ) : (
+                        <Fragment>
+                          <TextField
+                            className={classes.textfield}
+                            defaultValue={inputPhone ? phone : phno}
+                            variant="outlined"
+                            disabled
+                            style={{
+                              color: "white",
+                              fontFamily: "Josefin Sans, sans-serif",
+                              // marginTop: "30px",
+                            }}
+                          />
+                          {/* {inputPhone ? phone : phno}
                             </Typography> */}
-                            <EditOutlinedIcon
-                              onClick={handlePhone}
-                              color="secondary"
-                              style={{ marginLeft: "47px", fontSize: "22px", marginTop: "15px" }}
-                            />
-                          </Fragment>
-                        )}
+                          <EditOutlinedIcon
+                            onClick={handlePhone}
+                            color="secondary"
+                            style={{
+                              marginLeft: "47px",
+                              fontSize: "22px",
+                              marginTop: "15px",
+                            }}
+                          />
+                        </Fragment>
+                      )}
                       {/* </TableCell> */}
                     </TableRow>
                   </TableBody>

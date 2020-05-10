@@ -155,7 +155,7 @@ function Restaurant(props) {
             </Typography>
             <StyledRating
                     name="customized-icons"
-                    defaultValue={4}
+                    defaultValue={5}
                     // readOnly
                     IconContainerComponent={IconContainer}
                     style={{ color: "#F05" }}
